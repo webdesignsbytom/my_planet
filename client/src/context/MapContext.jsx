@@ -9,7 +9,7 @@ export const MapContext = React.createContext();
 
 const MapContextProvider = ({ children }) => {
   const [mapPageSettings, setMapPageSettings] = useState({
-    displayLongitudeAndLatitude: true,
+    displayLongitudeAndLatitude: false,
     includeLongitudeAndLatitudeText: false,
     selectedStyle: DisplaySettingsArray[0],
     rightQatMenu: true,
@@ -18,12 +18,12 @@ const MapContextProvider = ({ children }) => {
     welcomeContainer: false,
     helpContainer: true,
     imagesContainer: false,
-    animatedSea: false,
+    animatedSea: true,
     antarcticaMode: false,
     mouseOverContainerActive: true,
     realTimeSettings: true,
     countryInfoDisplayIsOpen: false,
-    countryListContainer: true,
+    countryListContainer: false,
     countriesVisited: CountriesVistingDataArray,
     isMuted: true,
   });
