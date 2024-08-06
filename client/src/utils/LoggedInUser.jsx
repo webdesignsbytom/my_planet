@@ -1,4 +1,4 @@
-import { jwtDecode } from 'jwt-decode';
+import jwt_decode from 'jwt-decode';
 
 export default function LoggedInUser() {
   const loadedToken = localStorage.getItem('token');
@@ -6,7 +6,7 @@ export default function LoggedInUser() {
     return null;
   }
 
-  const decoded = jwtDecode(loadedToken);
+  const decoded = jwt_decode(loadedToken);
 
   return decoded;
 }
