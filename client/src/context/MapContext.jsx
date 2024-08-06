@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 // Data
 import { DisplaySettingsArray } from '../utils/map/MapData';
@@ -9,7 +9,7 @@ export const MapContext = React.createContext();
 
 const MapContextProvider = ({ children }) => {
   const [mapPageSettings, setMapPageSettings] = useState({
-    displayLongitudeAndLatitude: false,
+    displayLongitudeAndLatitude: true,
     includeLongitudeAndLatitudeText: false,
     selectedStyle: DisplaySettingsArray[0],
     rightQatMenu: true,
@@ -18,16 +18,22 @@ const MapContextProvider = ({ children }) => {
     welcomeContainer: false,
     helpContainer: true,
     imagesContainer: false,
-    animatedSea: true,
+    animatedSea: false,
     antarcticaMode: false,
     mouseOverContainerActive: true,
     realTimeSettings: true,
     countryInfoDisplayIsOpen: false,
-    countryListContainer: false,
+    countryListContainer: true,
     countriesVisited: CountriesVistingDataArray,
+    countrySelected: null,
+    sunAndMoon: true,
+    displayCountryNames: true,
     isMuted: true,
   });
 
+  useEffect(() => {
+    localStorage.setItem('mapSettings', JSON.stringify(mapPageSettings))
+  }, [mapPageSettings])
 
   const toggleMapSettingsContainer = () => {
     setMapPageSettings({
@@ -64,10 +70,11 @@ const MapContextProvider = ({ children }) => {
     });
   };
 
-  const toggleCountryInfoContainer = () => {
+  const toggleCountryInfoContainer = (territory) => {
     setMapPageSettings({
       ...mapPageSettings,
       countryInfoDisplayIsOpen: !mapPageSettings.countryInfoDisplayIsOpen,
+      countrySelected: territory,
     });
   };
 

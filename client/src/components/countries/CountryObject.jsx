@@ -29,7 +29,7 @@ function CountryObject({
           }
           onMouseOver={() => handleMouseOver(territory.id)}
           onMouseLeave={handleMouseLeave}
-          onMouseUp={() => exploreCountry(territory.id)}
+          onMouseUp={() => exploreCountry(territory)}
         />
       </g>
     </>

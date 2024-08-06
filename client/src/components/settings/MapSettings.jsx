@@ -18,71 +18,43 @@ function MapSettings() {
       ...prevSettings,
       selectedStyle: style,
       animatedSea: style.name === 'animated',
+      sunAndMoon: style.name === 'animated',
     }));
   };
 
+  const mapSettingslist = [
+    {
+      label: 'Display Longitude and Latitude',
+      setting: 'displayLongitudeAndLatitude',
+    },
+    { label: 'Antarctica Mode', setting: 'antarcticaMode' },
+    { label: 'Animated Sea', setting: 'animatedSea' },
+    { label: 'Animated Sun and Moon', setting: 'sunAndMoon' },
+    { label: 'Mouse Over slideshow Container', setting: 'mouseOverContainer' },
+    { label: 'Real Time Settings', setting: 'realTimeSettings' },
+    { label: 'Display country names', setting: 'displayCountryNames' },
+  ];
+
   return (
     <section className='grid p-4 h-fit gap-2'>
-      <div className='flex items-center'>
-        <span className='flex-1'>Display Longitude and Latitude</span>
-        <label className='switch'>
-          <input
-            type='checkbox'
-            checked={mapPageSettings.displayLongitudeAndLatitude}
-            onChange={() => handleToggleChange('displayLongitudeAndLatitude')}
-          />
-          <span className='slider'></span>
-        </label>
-      </div>
-      <div className='flex items-center'>
-        <span className='flex-1'>Antarctica Mode</span>
-        <label className='switch'>
-          <input
-            type='checkbox'
-            checked={mapPageSettings.antarcticaMode}
-            onChange={() => handleToggleChange('antarcticaMode')}
-          />
-          <span className='slider'></span>
-        </label>
-      </div>
-      <div className='flex items-center'>
-        <span className='flex-1'>Animated Sea</span>
-        <label className='switch'>
-          <input
-            type='checkbox'
-            checked={mapPageSettings.animatedSea}
-            onChange={() => handleToggleChange('animatedSea')}
-          />
-          <span className='slider'></span>
-        </label>
-      </div>
-      <div className='flex items-center'>
-        <span className='flex-1'>Mouse Over slideshow Container</span>
-        <label className='switch'>
-          <input
-            type='checkbox'
-            checked={mapPageSettings.mouseOverContainer}
-            onChange={() => handleToggleChange('mouseOverContainerActive')}
-          />
-          <span className='slider'></span>
-        </label>
-      </div>
-      <div className='flex items-center'>
-        <span className='flex-1'>Real Time Settings</span>
-        <label className='switch'>
-          <input
-            type='checkbox'
-            checked={mapPageSettings.realTimeSettings}
-            onChange={() => handleToggleChange('realTimeSettings')}
-          />
-          <span className='slider'></span>
-        </label>
-      </div>
+      {mapSettingslist.map((item, index) => (
+        <div key={index} className='flex items-center'>
+          <span className='flex-1'>{item.label}</span>
+          <label className='switch'>
+            <input
+              type='checkbox'
+              checked={mapPageSettings[item.setting]}
+              onChange={() => handleToggleChange(item.setting)}
+            />
+            <span className='slider'></span>
+          </label>
+        </div>
+      ))}
 
-      <div className='h-[2px] bg-gray-400'></div>
+      <div className='h-[1px] bg-gray-400 my-4'></div>
 
       <section className='grid'>
-        <div className='grid py-1'>Map Style</div>
+        <div className='grid pb-4'>Map Style</div>
         <div className='grid h-full overflow-y-auto'>
           <section className='grid grid-cols-3 gap-y-6 h-fit'>
             {DisplaySettingsArray.map((display, index) => (

@@ -25,7 +25,7 @@ function CountryInformationContainer() {
 
         <article className='grid text-center'>
           <div className='pt-4'>
-            <h4 className='text-xl font-poppins font-medium'>Country info</h4>
+            <h4 className='text-xl font-poppins font-medium'>Country info for {mapPageSettings.countrySelected.id}</h4>
           </div>
         </article>
       </div>
