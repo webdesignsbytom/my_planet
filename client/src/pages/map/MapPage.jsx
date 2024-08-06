@@ -1,10 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 // Data
 import { CountriesDataArray } from '../../utils/data/CountriesData';
 // Functions
 import { createLongAndLatLines } from '../../utils/map/MapFunctions';
 // Context
 import { MapContext } from '../../context/MapContext';
+import { UserContext } from '../../context/UserContext';
 // Components
 import CountryObject from '../../components/countries/CountryObject';
 import SettingsMainContainer from '../../components/settings/SettingsMainContainer';
@@ -15,9 +16,24 @@ import WelcomeBackContainer from '../../components/overlays/WelcomeBackContainer
 import CountryInformationContainer from '../../components/overlays/CountryInformationContainer';
 import CountriesListContainer from '../../components/overlays/CountriesListContainer';
 import CountrySlideshowContainer from '../../components/overlays/CountrySlideshowContainer';
+import AccountSetUpContainer from '../../components/settings/AccountSetUpContainer';
 
 function MapPage() {
-  const { mapPageSettings, toggleCountryInfoContainer } = useContext(MapContext);
+  const {
+    mapPageSettings,
+    toggleCountryInfoContainer,
+    setMapPageSettings,
+  } = useContext(MapContext);
+  const { user } = useContext(UserContext);
+
+  useEffect(() => {
+    // if (!user.id && mapPageSettings.firstVisitToSite) {
+    //   setMapPageSettings({
+    //     ...mapPageSettings,
+    //     firstVisitToSite: false
+    //   });
+    // }
+  }, [user]);
 
   // Mouse position data
   const [activeCountry, setActiveCountry] = useState(null);
@@ -123,6 +139,9 @@ function MapPage() {
       {/* Country information container */}
       {mapPageSettings.countryInfoDisplayIsOpen && (
         <CountryInformationContainer />
+      )}
+      {mapPageSettings.firstVisitToSite && (
+        <AccountSetUpContainer />
       )}
 
       {/* Display Box - images and songs */}

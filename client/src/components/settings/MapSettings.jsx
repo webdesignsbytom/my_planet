@@ -30,6 +30,8 @@ function MapSettings() {
     { label: 'Antarctica Mode', setting: 'antarcticaMode' },
     { label: 'Animated Sea', setting: 'animatedSea' },
     { label: 'Animated Sun and Moon', setting: 'sunAndMoon' },
+    { label: 'Show visited only', setting: 'vistiedVisible' },
+    { label: 'Show not visted only', setting: 'unvistedVisible' },
     { label: 'Mouse Over slideshow Container', setting: 'mouseOverContainer' },
     { label: 'Real Time Settings', setting: 'realTimeSettings' },
     { label: 'Display country names', setting: 'displayCountryNames' },

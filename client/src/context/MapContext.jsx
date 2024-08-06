@@ -9,31 +9,47 @@ export const MapContext = React.createContext();
 
 const MapContextProvider = ({ children }) => {
   const [mapPageSettings, setMapPageSettings] = useState({
-    displayLongitudeAndLatitude: true,
+    displayLongitudeAndLatitude: false,
     includeLongitudeAndLatitudeText: false,
     selectedStyle: DisplaySettingsArray[0],
     rightQatMenu: true,
     settingsMenuIsOpen: false,
     statisticsContainer: true,
     welcomeContainer: false,
-    helpContainer: true,
+    helpContainer: false,
     imagesContainer: false,
-    animatedSea: false,
+    animatedSea: true,
     antarcticaMode: false,
     mouseOverContainerActive: true,
     realTimeSettings: true,
     countryInfoDisplayIsOpen: false,
-    countryListContainer: true,
+    countryListContainer: false,
     countriesVisited: CountriesVistingDataArray,
     countrySelected: null,
     sunAndMoon: true,
     displayCountryNames: true,
     isMuted: true,
+    vistiedVisible: true,
+    unvistedVisible: true,
+    firstVisitToSite: true,
   });
 
   useEffect(() => {
-    localStorage.setItem('mapSettings', JSON.stringify(mapPageSettings))
-  }, [mapPageSettings])
+    localStorage.setItem('mapSettings', JSON.stringify(mapPageSettings));
+  }, [mapPageSettings]);
+
+  const closeAllModals = () => {
+    setMapPageSettings({
+      ...mapPageSettings,
+      settingsMenuIsOpen: false,
+      statisticsContainer: false,
+      welcomeContainer: false,
+      helpContainer: false,
+      imagesContainer: false,
+      countryInfoDisplayIsOpen: false,
+      countryListContainer: false,
+    });
+  };
 
   const toggleMapSettingsContainer = () => {
     setMapPageSettings({
@@ -62,7 +78,7 @@ const MapContextProvider = ({ children }) => {
       imagesContainer: !mapPageSettings.imagesContainer,
     });
   };
-  
+
   const toggleHelpSettingsContainer = () => {
     setMapPageSettings({
       ...mapPageSettings,
@@ -98,6 +114,13 @@ const MapContextProvider = ({ children }) => {
     });
   };
 
+  const toggleNewUserContainer = () => {
+    setMapPageSettings({
+      ...mapPageSettings,
+      firstVisitToSite: !mapPageSettings.firstVisitToSite,
+    });
+  };
+
   return (
     <MapContext.Provider
       value={{
@@ -110,7 +133,10 @@ const MapContextProvider = ({ children }) => {
         toggleWelcomeMessageContainer,
         toggleMapSettingsContainer,
         toggleCountryInfoContainer,
-        toggleCountryListContainer,toggleHelpSettingsContainer
+        toggleCountryListContainer,
+        toggleHelpSettingsContainer,
+        closeAllModals,
+        toggleNewUserContainer,
       }}
     >
       {children}

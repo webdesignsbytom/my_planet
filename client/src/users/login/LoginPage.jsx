@@ -8,10 +8,12 @@ import client from '../../api/client';
 // Components
 import Navbar from '../../components/nav/Navbar';
 import LoadingSpinner from '../../components/utils/LoadingSpinner';
+// Constants
+import { LOGIN_API, LOGIN_PAGE_URL, MAP_PAGE_URL } from '../../utils/Constants';
 
 function LoginPage() {
   const { setUser } = useContext(UserContext);
-  const { setActiveNav } = useContext(ToggleContext)
+  const { setActiveNav } = useContext(ToggleContext);
 
   const [loginInProgress, setLoginInProgress] = useState(false);
   const [loginError, setLoginError] = useState(false);
@@ -24,36 +26,34 @@ function LoginPage() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    setActiveNav('/login')
-  }, [])
+    setActiveNav(LOGIN_PAGE_URL);
+  }, []);
 
   const navigateToMapPage = () => {
-    navigate('/world-map', { replace: true });
+    navigate(MAP_PAGE_URL, { replace: true });
   };
 
   const handleLogin = (event) => {
     event.preventDefault();
 
-    setLoginInProgress(true)
+    setLoginInProgress(true);
     client
-      .post('/login', loginFormData, false)
+      .post(LOGIN_API, loginFormData, false)
       .then((res) => {
-
         localStorage.setItem(
           process.env.REACT_APP_USER_TOKEN,
           res.data.data.token
         );
-        setLoginInProgress(false)
+        setLoginInProgress(false);
         setUser(res.data.data.existingUser);
       })
       .then(() => navigateToMapPage())
 
       .catch((err) => {
-        setLoginError(true)
+        setLoginError(true);
         console.error('Unable to login', err);
       });
   };
-
 
   const handleChange = (event) => {
     setLoginError(false);
@@ -65,7 +65,6 @@ function LoginPage() {
     });
   };
 
-  
   const handleCheckedKeepMeLoggedIn = (event) => {
     setLoginFormData({
       ...loginFormData,
@@ -75,10 +74,10 @@ function LoginPage() {
 
   return (
     <div className='h-screen overflow-hidden grid bg-gray-50 dark:bg-black dark:text-gray-100'>
-      <section className='grid h-full grid-rows-reg'>
+      <div className='grid grid-rows-reg lg:grid-cols-reg lg:grid-rows-1 h-full w-full'>
         <Navbar />
         <main className='bg-white main__bg grid items-center justify-center'>
-          <div className='grid justify-center items-center w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700'>
+          <div className='grid justify-center items-center w-full bg-white rounded-lg shadow-xl dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700'>
             <div className='p-6 space-y-4 md:space-y-6 sm:p-8'>
               <h1 className='text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white'>
                 Sign in to your account
@@ -162,7 +161,9 @@ function LoginPage() {
                 </button>
                 {loginError && (
                   <div className='text-center'>
-                    <span className='text-red-700 font-semibold'>LOGIN FAILED</span>
+                    <span className='text-red-700 font-semibold'>
+                      LOGIN FAILED
+                    </span>
                   </div>
                 )}
                 <p className='font-light text-gray-500 dark:text-gray-400'>
@@ -178,7 +179,7 @@ function LoginPage() {
             </div>
           </div>
         </main>
-      </section>
+      </div>
     </div>
   );
 }

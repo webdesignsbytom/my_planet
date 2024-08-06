@@ -9,10 +9,7 @@ import { MAP_PAGE_URL } from '../utils/Constants';
 export const UserContext = React.createContext();
 
 const UserContextProvider = ({ children }) => {
-  const [user, setUser] = useState({
-    id: 4,
-    hasSetUp: true,
-  });
+  const [user, setUser] = useState({});
 
   const [token, setToken] = useState(
     localStorage.getItem(process.env.REACT_APP_USER_TOKEN) || ''

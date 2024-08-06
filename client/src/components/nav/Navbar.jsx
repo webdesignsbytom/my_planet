@@ -3,17 +3,21 @@ import { Link, useNavigate } from 'react-router-dom';
 // Context
 import { UserContext } from '../../context/UserContext';
 import { ToggleContext } from '../../context/ToggleContext';
+import { MapContext } from '../../context/MapContext';
 // Images
 import LogoImage from '../../assets/images/logos/wdbt-black.svg';
+// Constants
 import {
   HOME_PAGE_URL,
   LOGIN_PAGE_URL,
   MAP_PAGE_URL,
   SIGN_UP_PAGE_URL,
+  TERMS_PAGE_URL,
 } from '../../utils/Constants';
 
 function Navbar() {
   const { user, setUser } = useContext(UserContext);
+  const { toggleMapSettingsContainer } = useContext(MapContext);
   const { toggleNavbarOpenClosed, toggleNavigation, activeNav, setActiveNav } =
     useContext(ToggleContext);
 
@@ -29,188 +33,79 @@ function Navbar() {
     navigate(HOME_PAGE_URL, { replace: true });
   };
 
+  const links = [
+    { to: HOME_PAGE_URL, label: 'Home' },
+    { to: MAP_PAGE_URL, label: 'Map' },
+    { to: TERMS_PAGE_URL, label: 'Terms and Privacy' },
+    ...(user.email
+      ? []
+      : [
+          { to: LOGIN_PAGE_URL, label: 'Login' },
+          { to: SIGN_UP_PAGE_URL, label: 'Sign Up' },
+        ]),
+    ...(user.role === 'ADMIN' || user.role === 'DEVELOPER'
+      ? [{ to: '/admin', label: 'Admin' }]
+      : []),
+  ];
+
+  // Pre open settings container
+  const handleSettingsClick = () => {
+    toggleMapSettingsContainer();
+  };
+
+  let basisTabStyle =
+    'hover:text-gray-700 bg-red-500 active:scale-95 grid items-center h-fit w-full py-1';
+
   return (
-    <nav className='h-full relative z-30 grid grid-cols-reg bg-yellow-400 py-2 border-b-2 border-solid border-black'>
-      <section className='grid items-center justify-center pl-4'>
-        <Link className='no__highlights' to={HOME_PAGE_URL}>
-          <img
-            className='w-10 no__highlights h-10'
-            src={LogoImage}
-            alt='Project world travel history logo'
-          />
-        </Link>
-      </section>
+    <nav className='grid bg-alt-colour h-full w-full overflow-hidden lg:min-w-[300px] border-black border-2 border-solid'>
+      <div className='grid grid-cols-reg lg:grid-rows-reg lg:grid-cols-1 h-full gap-2 py-2 px-1 md:px-2'>
+        {/* Nav image */}
+        <section className='grid items-center lg:justify-center lg:py-2 h-full w-full'>
+          <div>
+            <Link to={HOME_PAGE_URL}>
+              <img
+                src={LogoImage}
+                alt='myPlanet logo'
+                className='w-8 h-8 lg:w-12 lg:h-12'
+              />
+            </Link>
+          </div>
+        </section>
 
-      {/* Phone Nav */}
-      <nav
-        onClick={() => {
-          toggleNavbarOpenClosed();
-        }}
-        className='grid items-center justify-end lg:hidden no__highlights pr-4'
-      >
-        <span className='cursor-pointer text-black hover:text-hover-grey'>
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            fill='none'
-            viewBox='0 0 24 24'
-            strokeWidth='1.5'
-            stroke='currentColor'
-            className='w-10 h-10 transition no__highlights duration-200 ease-in-out select-none focus:scale-125 active:scale-125'
-            data-te-animation-init
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              d='M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5'
-            />
-          </svg>
-        </span>
-      </nav>
-
-      {/* Navigation */}
-      <section className='hidden lg:grid justify-end'>
-        <div className='grid items-center pr-4'>
-          <ul className='grid grid-flow-col w-fit justify-end gap-4 font-semibold'>
-            <li
-              className={
-                activeNav === HOME_PAGE_URL
-                  ? 'text-gray-600 hover:text-gray-700 active:scale-95'
-                  : 'hover:text-gray-700 active:scale-95'
-              }
-            >
-              <Link className='w-full' to={HOME_PAGE_URL}>
-                Home
-              </Link>
-            </li>
-            <li
-              className={
-                activeNav === MAP_PAGE_URL
-                  ? 'text-gray-600 hover:text-gray-700 active:scale-95'
-                  : 'hover:text-gray-700 active:scale-95'
-              }
-            >
-              <Link className='w-full' to={MAP_PAGE_URL}>
-                Map
-              </Link>
-            </li>
-            {!user.email && (
-              <>
-                <li
-                  className={
-                    activeNav === LOGIN_PAGE_URL
-                      ? 'text-gray-600 hover:text-gray-700 active:scale-95'
-                      : 'hover:text-gray-700 active:scale-95'
-                  }
-                >
-                  <Link className='w-full' to={LOGIN_PAGE_URL}>
-                    Login
-                  </Link>
-                </li>
-                <li
-                  className={
-                    activeNav === SIGN_UP_PAGE_URL
-                      ? 'text-gray-600 hover:text-gray-700 active:scale-95'
-                      : 'hover:text-gray-700 active:scale-95'
-                  }
-                >
-                  <Link className='w-full' to={SIGN_UP_PAGE_URL}>
-                    Sign Up
-                  </Link>
-                </li>
-              </>
-            )}
-            {(user.role === 'ADMIN' || user.role === 'DEVELOPER') && (
+        {/* Main nav items */}
+        <section className='grid items-center justify-end lg:justify-normal w-full h-full'>
+          <ul className='grid grid-flow-col font-travel text-center lg:text-xl lg:grid-flow-row w-full h-fit gap-2 font-semibold'>
+            {links.map((link) => (
               <li
+                key={link.to}
                 className={
-                  activeNav === '/admin'
-                    ? 'text-gray-600 hover:text-gray-700 active:scale-95'
-                    : 'hover:text-gray-700 active:scale-95'
+                  activeNav === link.to
+                    ? 'text-white hover:text-gray-700 active:scale-95 bg-red-800 grid items-center h-fit w-full py-1'
+                    : `${basisTabStyle}`
                 }
               >
-                <Link className='w-full' to='/admin'>
-                  Admin
+                <Link className='w-full' to={link.to}>
+                  {link.label}
                 </Link>
               </li>
-            )}
+            ))}
+            <li className={`${basisTabStyle}`}>
+              <Link
+                className='w-full'
+                to={MAP_PAGE_URL}
+                onClick={handleSettingsClick}
+              >
+                Settings
+              </Link>
+            </li>
             {user.email && (
               <button className='' onClick={logoutUser}>
                 Logout
               </button>
             )}
           </ul>
-        </div>
-      </section>
-
-      {toggleNavigation && (
-        <nav className='absolute lg:hidden w-full left-0 top-24 py-2 px-4'>
-          <div className='bg-black nav__bg p-2 rounded'>
-            <ul className='text-center grid bg-black h-fit w-full text-xl'>
-              <li
-                className={
-                  activeNav === HOME_PAGE_URL
-                    ? 'w-full no__highlights nav__bg hover:bg-green-500 active:scale-95 grid py-2 outline-2 outline outline-black bg-yellow-700 text-gray-800 font-semibold'
-                    : 'w-full no__highlights nav__bg hover:bg-blue-500 active:scale-95 grid py-2 outline-2 outline outline-black bg-yellow-500 text-gray-800 font-semibold'
-                }
-              >
-                <Link className='w-full' to={HOME_PAGE_URL}>
-                  Home
-                </Link>
-              </li>
-              <li
-                className={
-                  activeNav === MAP_PAGE_URL
-                    ? 'w-full no__highlights nav__bg hover:bg-green-500 active:scale-95 grid py-2 outline-2 outline outline-black bg-yellow-700 text-gray-800 font-semibold'
-                    : 'w-full no__highlights nav__bg hover:bg-blue-500 active:scale-95 grid py-2 outline-2 outline outline-black bg-yellow-500 text-gray-800 font-semibold'
-                }
-              >
-                <Link className='w-full' to={MAP_PAGE_URL}>
-                  Map
-                </Link>
-              </li>
-
-              {!user.email && (
-                <>
-                  <li
-                    className={
-                      activeNav === LOGIN_PAGE_URL
-                        ? 'w-full no__highlights nav__bg hover:bg-green-500 active:scale-95 grid py-2 outline-2 outline outline-black bg-yellow-700 text-gray-800 font-semibold'
-                        : 'w-full no__highlights nav__bg hover:bg-blue-500 active:scale-95 grid py-2 outline-2 outline outline-black bg-yellow-500 text-gray-800 font-semibold'
-                    }
-                  >
-                    <Link className='w-full' to={LOGIN_PAGE_URL}>
-                      Login
-                    </Link>
-                  </li>
-                  <li
-                    className={
-                      activeNav === SIGN_UP_PAGE_URL
-                        ? 'w-full no__highlights nav__bg hover:bg-green-500 active:scale-95 grid py-2 outline-2 outline outline-black bg-yellow-700 text-gray-800 font-semibold'
-                        : 'w-full no__highlights nav__bg hover:bg-blue-500 active:scale-95 grid py-2 outline-2 outline outline-black bg-yellow-500 text-gray-800 font-semibold'
-                    }
-                  >
-                    <Link className='w-full' to={SIGN_UP_PAGE_URL}>
-                      Sign Up
-                    </Link>
-                  </li>
-                </>
-              )}
-              {(user.role === 'ADMIN' || user.role === 'DEVELOPER') && (
-                <li
-                  className={
-                    activeNav === '/admin'
-                      ? 'w-full no__highlights nav__bg hover:bg-green-500 active:scale-95 grid py-2 outline-2 outline outline-black bg-yellow-700 text-gray-800 font-semibold'
-                      : 'w-full no__highlights nav__bg hover:bg-blue-500 active:scale-95 grid py-2 outline-2 outline outline-black bg-yellow-500 text-gray-800 font-semibold'
-                  }
-                >
-                  <Link className='w-full' to='/admin'>
-                    Admin
-                  </Link>
-                </li>
-              )}
-            </ul>
-          </div>
-        </nav>
-      )}
+        </section>
+      </div>
     </nav>
   );
 }

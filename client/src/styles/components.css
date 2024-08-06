@@ -8,6 +8,20 @@
   user-select: none;
 }
 
+@font-face {
+  font-family: 'TravelFont';
+  src: url('../assets/fonts/SFComicScript-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.text__stroke {
+  /* Prefix required. Even Firefox only supports the -webkit- prefix */
+  color: black;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+}
+
 @keyframes oceanColourChange {
   0%, 100% {
       background-color: #007bff; /* Initial blue color */

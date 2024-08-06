@@ -1,10 +1,8 @@
 import React, { useContext, useState } from 'react';
 // Components
-import SettingsForm from '../forms/SettingsForm';
 import MapSettings from './MapSettings';
 import UserSettings from './UserSettings';
 // Icons
-import { TbWorldLatitude } from 'react-icons/tb';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { IoArrowBackCircle } from 'react-icons/io5';
 // Context

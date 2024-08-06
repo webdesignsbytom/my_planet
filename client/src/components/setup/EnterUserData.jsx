@@ -6,21 +6,21 @@ import FamilyForm from '../forms/FamilyForm';
 function EnterUserData({ accountData, setCurrentSetupSection }) {
   const handleSubmitSinglePersonForm = (e) => {
     e.preventDefault();
-    setCurrentSetupSection(2)
+    setCurrentSetupSection(2);
   };
 
   const handleSubmitCouplesForm = (e) => {
     e.preventDefault();
-    setCurrentSetupSection(2)
+    setCurrentSetupSection(2);
   };
 
   const handleSubmitFamilyForm = (e) => {
     e.preventDefault();
-    setCurrentSetupSection(2)
+    setCurrentSetupSection(2);
   };
 
   return (
-    <section className='grid grid-rows-reg gap-2 h-full overflow-y-scroll'>
+    <section className='grid grid-rows-reg gap-2 h-full'>
       <div className='text-center'>
         <h6>Enter Information about yourself</h6>
       </div>

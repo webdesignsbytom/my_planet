@@ -13,7 +13,7 @@ function CouplesForm({ handleSubmitCouplesForm }) {
   };
 
   return (
-    <form onSubmit={handleSubmitCouplesForm} className='overflow-y-scroll'>
+    <form onSubmit={handleSubmitCouplesForm} className=''>
       <div className='pb-1'>
         <label>Person 1</label>
       </div>

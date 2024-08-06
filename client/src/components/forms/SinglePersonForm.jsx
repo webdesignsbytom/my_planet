@@ -9,7 +9,7 @@ function SinglePersonForm({ handleSubmitSinglePersonForm }) {
   };
 
   return (
-    <form onSubmit={handleSubmitSinglePersonForm} className='overflow-y-scroll'>
+    <form onSubmit={handleSubmitSinglePersonForm} className=''>
       <div className='pb-1'>
         <label>Person 1</label>
       </div>

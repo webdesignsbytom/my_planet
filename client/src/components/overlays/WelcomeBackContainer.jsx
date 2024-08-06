@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { MapContext } from '../../context/MapContext';
 // Icons
 import { IoCloseCircleOutline } from 'react-icons/io5';
+// Components
 import OwnerBanner from './OwnerBanner';
 
 function WelcomeBackContainer() {
