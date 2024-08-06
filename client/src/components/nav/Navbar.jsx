@@ -5,7 +5,7 @@ import { UserContext } from '../../context/UserContext';
 import { ToggleContext } from '../../context/ToggleContext';
 import { MapContext } from '../../context/MapContext';
 // Images
-import LogoImage from '../../assets/images/logos/wdbt-black.svg';
+import LogoImage from '../../assets/images/logos/my_planet_camera_travel_logo.png';
 // Constants
 import {
   HOME_PAGE_URL,
@@ -56,6 +56,8 @@ function Navbar() {
   let basisTabStyle =
     'hover:text-gray-700 bg-red-500 active:scale-95 grid items-center h-fit w-full py-1';
 
+  let activeTabStyle = 'text-white hover:text-gray-700 active:scale-95 bg-red-800 grid items-center h-fit w-full py-1'
+
   return (
     <nav className='grid bg-alt-colour h-full w-full overflow-hidden lg:min-w-[300px] border-black border-2 border-solid'>
       <div className='grid grid-cols-reg lg:grid-rows-reg lg:grid-cols-1 h-full gap-2 py-2 px-1 md:px-2'>
@@ -66,7 +68,7 @@ function Navbar() {
               <img
                 src={LogoImage}
                 alt='myPlanet logo'
-                className='w-8 h-8 lg:w-12 lg:h-12'
+                className='w-8 h-8 lg:w-44 lg:h-44'
               />
             </Link>
           </div>
@@ -74,13 +76,13 @@ function Navbar() {
 
         {/* Main nav items */}
         <section className='grid items-center justify-end lg:justify-normal w-full h-full'>
-          <ul className='grid grid-flow-col font-travel text-center lg:text-xl lg:grid-flow-row w-full h-fit gap-2 font-semibold'>
+          <ul className='grid grid-flow-col font-travel text-center lg:text-xl lg:grid-flow-row w-full h-fit gap-2 font-semibold lg:mb-10'>
             {links.map((link) => (
               <li
                 key={link.to}
                 className={
                   activeNav === link.to
-                    ? 'text-white hover:text-gray-700 active:scale-95 bg-red-800 grid items-center h-fit w-full py-1'
+                    ? `${activeTabStyle}`
                     : `${basisTabStyle}`
                 }
               >

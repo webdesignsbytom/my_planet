@@ -48,7 +48,7 @@ function HomePage() {
             backgroundRepeat: 'no-repeat',
           }}
         >
-          <div className='grid items-center justify-center w-full h-full overflow-hidden'>
+          <div className='grid items-center justify-center w-full h-full overflow-hidden text-center'>
             <div className='grid gap-2'>
               <section className='grid bg-transparent-white py-4 px-1 rounded-tl-3xl text__stroke'>
                 <h1 className='text-8xl tracking-tight font-travel text-red-500 -rotate-2 shadow-xl'>
