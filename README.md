@@ -1,5 +1,7 @@
 # Project World
 
+Live Link [MyPlanet](https://myplanetview.netlify.app/)
+
 ## Table of Contents
 
 - [Project World](#project-world)
@@ -23,7 +25,11 @@
 
 **Project World** is an interactive map application where users can add data and images to the countries they have visited. The application scans users' media profiles and matches any photos with country hashtags to the respective countries on their map. This feature reduces the need to upload numerous pictures manually. Additionally, the application compiles memory slideshows and posters to advertise countries the user has not yet visited.
 
-<img src='./assets/images/project_world_map.png' alt='home page' style='width: full;' />
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+  <div><img src="./assets/images/main_image2.png" alt="Card Album" style="width: 100%;"/></div>
+  <div><img src="./assets/images/main_image.png" alt="Trading Card Game" style="width: 100%;"/></div>
+  <div><img src="./assets/images/main_image3.png" alt="Card Album" style="width: 100%;"/></div>
+</div>
 
 
 ## Features

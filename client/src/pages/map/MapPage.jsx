@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 // Data
 import { CountriesDataArray } from '../../utils/data/CountriesData';
 // Functions
 import { createLongAndLatLines } from '../../utils/map/MapFunctions';
 // Context
 import { MapContext } from '../../context/MapContext';
-import { UserContext } from '../../context/UserContext';
 // Components
 import CountryObject from '../../components/countries/CountryObject';
 import SettingsMainContainer from '../../components/settings/SettingsMainContainer';
@@ -19,21 +18,8 @@ import CountrySlideshowContainer from '../../components/overlays/CountrySlidesho
 import AccountSetUpContainer from '../../components/settings/AccountSetUpContainer';
 
 function MapPage() {
-  const {
-    mapPageSettings,
-    toggleCountryInfoContainer,
-    setMapPageSettings,
-  } = useContext(MapContext);
-  const { user } = useContext(UserContext);
-
-  useEffect(() => {
-    // if (!user.id && mapPageSettings.firstVisitToSite) {
-    //   setMapPageSettings({
-    //     ...mapPageSettings,
-    //     firstVisitToSite: false
-    //   });
-    // }
-  }, [user]);
+  const { mapPageSettings, toggleCountryInfoContainer } =
+    useContext(MapContext);
 
   // Mouse position data
   const [activeCountry, setActiveCountry] = useState(null);
@@ -100,10 +86,10 @@ function MapPage() {
 
             {/* Countries Array */}
             {CountriesDataArray.map((country) =>
-              country.countryBorderPaths.map((territory, territoryIndex) => (
+              country.countryBorderPaths.map((territory, index) => (
                 <CountryObject
+                  key={`${country.countryName}-${index}`}
                   country={country}
-                  territoryIndex={territoryIndex}
                   territory={territory}
                   hoveredCountry={hoveredCountry}
                   activeCountry={activeCountry}
@@ -140,9 +126,7 @@ function MapPage() {
       {mapPageSettings.countryInfoDisplayIsOpen && (
         <CountryInformationContainer />
       )}
-      {mapPageSettings.firstVisitToSite && (
-        <AccountSetUpContainer />
-      )}
+      {mapPageSettings.firstVisitToSite && <AccountSetUpContainer />}
 
       {/* Display Box - images and songs */}
       {hoveredCountry && (

@@ -36,7 +36,7 @@ const MapContextProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem('mapSettings', JSON.stringify(mapPageSettings));
-  }, [mapPageSettings]);
+  }, []);
 
   const closeAllModals = () => {
     setMapPageSettings({

@@ -19,9 +19,9 @@ COPY . .
 RUN npx prisma generate --schema=prisma/schema.prisma
 
 ## Environment variables
-ENV PORT=3000
+ENV PORT=6000
 
-EXPOSE 3000
+EXPOSE 6000
 
 ## Start commands in 'exec form' 
 CMD [ "npm", "start" ]
