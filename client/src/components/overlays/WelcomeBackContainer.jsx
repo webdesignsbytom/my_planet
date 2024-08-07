@@ -4,7 +4,7 @@ import { MapContext } from '../../context/MapContext';
 // Icons
 import { IoCloseCircleOutline } from 'react-icons/io5';
 // Components
-import OwnerBanner from './OwnerBanner';
+import OwnerBanner from './OwnerDisplayContainer';
 
 function WelcomeBackContainer() {
   const { mapPageSettings, toggleWelcomeMessageContainer } =

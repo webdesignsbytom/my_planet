@@ -5,7 +5,7 @@ import { IoCloseCircleOutline } from 'react-icons/io5';
 import { MapContext } from '../../context/MapContext';
 
 function CountryInformationContainer() {
-  const { mapPageSettings, toggleCountryInfoContainer } = useContext(MapContext);
+  const { mapPageSettings, toggleCountryInfoContainer, mapPageContainerSettings } = useContext(MapContext);
 
   return (
     <section
@@ -25,7 +25,7 @@ function CountryInformationContainer() {
 
         <article className='grid text-center'>
           <div className='pt-4'>
-            <h4 className='text-xl font-poppins font-medium'>Country info for {mapPageSettings.countrySelected.id}</h4>
+            <h4 className='text-xl font-poppins font-medium'>Country info for {mapPageContainerSettings.countrySelected.id}</h4>
           </div>
         </article>
       </div>

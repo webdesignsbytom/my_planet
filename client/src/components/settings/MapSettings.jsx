@@ -4,7 +4,12 @@ import { MapContext } from '../../context/MapContext';
 import { DisplaySettingsArray } from '../../utils/map/MapData';
 
 function MapSettings() {
-  const { mapPageSettings, setMapPageSettings } = useContext(MapContext);
+  const {
+    mapPageSettings,
+    setMapPageSettings,
+    mapPageContainerSettings,
+    setMapPageContainerSettings,
+  } = useContext(MapContext);
 
   const handleToggleChange = (setting) => {
     setMapPageSettings((prevSettings) => ({
@@ -21,6 +26,20 @@ function MapSettings() {
       sunAndMoon: style.name === 'animated',
     }));
   };
+
+  const handleContainerToggleChange = (setting) => {
+    setMapPageContainerSettings((prevSettings) => ({
+      ...prevSettings,
+      [setting]: !prevSettings[setting],
+    }));
+  };
+
+  const mapContainerSettings = [
+    {
+      label: 'Display user banner',
+      setting: 'userBanner',
+    },
+  ];
 
   const mapSettingslist = [
     {
@@ -39,6 +58,19 @@ function MapSettings() {
 
   return (
     <section className='grid p-4 h-fit gap-2'>
+      {mapContainerSettings.map((item, index) => (
+        <div key={index} className='flex items-center'>
+          <span className='flex-1'>{item.label}</span>
+          <label className='switch'>
+            <input
+              type='checkbox'
+              checked={mapPageContainerSettings[item.setting]}
+              onChange={() => handleContainerToggleChange(item.setting)}
+            />
+            <span className='slider'></span>
+          </label>
+        </div>
+      ))}
       {mapSettingslist.map((item, index) => (
         <div key={index} className='flex items-center'>
           <span className='flex-1'>{item.label}</span>

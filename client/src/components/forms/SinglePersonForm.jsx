@@ -1,11 +1,48 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+// Context
+import { UserContext } from '../../context/UserContext';
+// Components
 import BirthCountrySelectP1 from '../../utils/user/BirthCountrySelectP1';
 import FavoriteCountrySelectP1 from '../../utils/user/FavoriteCountrySelectP1';
 import GenderSelectP1 from '../../utils/user/GenderSelectP1';
+import client from '../../api/client';
+import { SINGLE_PERSON_POST_API } from '../../utils/Constants';
 
-function SinglePersonForm({ handleSubmitSinglePersonForm }) {
+function SinglePersonForm() {
+  const { user, setUser } = useContext(UserContext);
+
+  const [formData, setFormData] = useState({
+    firstNamePerson1: '',
+    lastNamePerson1: '',
+    preferedNamePerson1: '',
+    genderPerson1: '',
+    birthCountryPerson1: '',
+    favoriteCountryPerson1: '',
+    hobbiesPerson1: '',
+    instagramIdPerson1: '',
+    specialHashtagsPerson1: '',
+    hiddenHashtagsPerson1: '',
+  });
+
   const handleChange = (event) => {
     const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmitSinglePersonForm = async (event) => {
+    event.preventDefault();
+    client
+      .post(`${SINGLE_PERSON_POST_API}/${user.id}`, formData, false)
+      .then((res) => {
+        setUser(res.data.data.updateUser);
+      })
+
+      .catch((err) => {
+        console.error('Unable to create single profile', err);
+      });
   };
 
   return (
@@ -23,6 +60,7 @@ function SinglePersonForm({ handleSubmitSinglePersonForm }) {
             name='firstNamePerson1'
             className='form-control block w-full px-3 py-1.5 mb-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
             placeholder='First Name'
+            value={formData.firstNamePerson1}
             onChange={handleChange}
           />
         </div>
@@ -34,6 +72,7 @@ function SinglePersonForm({ handleSubmitSinglePersonForm }) {
             name='lastNamePerson1'
             className='form-control block w-full px-3 py-1.5 mb-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
             placeholder='Last Name'
+            value={formData.lastNamePerson1}
             onChange={handleChange}
           />
         </div>
@@ -48,6 +87,7 @@ function SinglePersonForm({ handleSubmitSinglePersonForm }) {
             name='preferedNamePerson1'
             className='form-control block w-full px-3 py-1.5 mb-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
             placeholder='Prefered Name'
+            value={formData.preferedNamePerson1}
             onChange={handleChange}
           />
         </div>
@@ -84,6 +124,7 @@ function SinglePersonForm({ handleSubmitSinglePersonForm }) {
           title='Seperate hobbies with a comma ,'
           className='form-control block w-full px-3 py-1.5 mb-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
           placeholder='Hobbies, climbing, scuba, wine'
+          value={formData.hobbiesPerson1}
           onChange={handleChange}
         />
       </div>
@@ -98,6 +139,7 @@ function SinglePersonForm({ handleSubmitSinglePersonForm }) {
           title='Where we locate images'
           className='form-control block w-full px-3 py-1.5 mb-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
           placeholder='@projectworld'
+          value={formData.instagramIdPerson1}
           onChange={handleChange}
         />
       </div>
@@ -110,11 +152,12 @@ function SinglePersonForm({ handleSubmitSinglePersonForm }) {
         </label>
         <input
           type='text'
-          id='hobbiesPerson1'
-          name='hobbiesPerson1'
+          id='specialHashtagsPerson1'
+          name='specialHashtagsPerson1'
           title='Seperate Hashtags we search for that you want pronounced'
           className='form-control block w-full px-3 py-1.5 mb-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
           placeholder='#splurg-city'
+          value={formData.specialHashtagsPerson1}
           onChange={handleChange}
         />
       </div>
@@ -131,6 +174,7 @@ function SinglePersonForm({ handleSubmitSinglePersonForm }) {
           title='Seperate Hashtags we search for that you want pronounced'
           className='form-control block w-full px-3 py-1.5 mb-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
           placeholder='#funerals'
+          value={formData.hiddenHashtagsPerson1}
           onChange={handleChange}
         />
       </div>
@@ -143,15 +187,6 @@ function SinglePersonForm({ handleSubmitSinglePersonForm }) {
           className='inline-block px-6 py-2.5 mt-4 w-full bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-800 hover:shadow-lg focus:bg-blue-800 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-900 active:shadow-lg transition duration-150 ease-in-out'
         >
           Submit
-          {/* {!registrationFormData.active && !registrationFormData.success && (
-            <span>Sign Up</span>
-          )}
-          {registrationFormData.active && (
-            <span className='flex items-center justify-center'>
-              <LoadingSpinner width={'w-5'} height={'h-5'} />
-            </span>
-          )}
-          {registrationFormData.success && <span>Success!</span>} */}
         </button>
       </div>
     </form>

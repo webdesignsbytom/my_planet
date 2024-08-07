@@ -8,9 +8,11 @@ import { IoArrowBackCircle } from 'react-icons/io5';
 // Context
 import { MapContext } from '../../context/MapContext';
 import HelpSettingsContainer from './HelpSettingsContainer';
+import ProfileSettings from './ProfileSettings';
 
 const settingsOptions = [
   { key: 'user', label: 'User Settings', component: UserSettings },
+  { key: 'profile', label: 'Profile Settings', component: ProfileSettings },
   { key: 'map', label: 'Map Settings', component: MapSettings },
   { key: 'help', label: 'Help Settings', component: HelpSettingsContainer }, // Assuming SettingsForm is the Help Settings component
 ];

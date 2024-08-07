@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+// Context
+import { MapContext } from '../../context/MapContext';
+import { UserContext } from '../../context/UserContext';
 
-function OwnerBanner({ closeContainer }) {
+function OwnerDisplayContainer() {
+  const { user } = useContext(UserContext)
+  const { toggleUserBannerContainer } = useContext(MapContext);
+
   return (
     <section
-      onDoubleClick={closeContainer}
+      onDoubleClick={toggleUserBannerContainer}
       title='User infomation banner (double click to close)'
       className='absolute top-1 left-1/2 transform -translate-x-1/2 bg-red-500 rounded-lg p-2 gap-2 cursor-default'
     >
@@ -27,4 +33,4 @@ function OwnerBanner({ closeContainer }) {
   );
 }
 
-export default OwnerBanner;
+export default OwnerDisplayContainer;

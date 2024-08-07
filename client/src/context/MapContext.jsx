@@ -13,25 +13,29 @@ const MapContextProvider = ({ children }) => {
     includeLongitudeAndLatitudeText: false,
     selectedStyle: DisplaySettingsArray[0],
     rightQatMenu: true,
-    settingsMenuIsOpen: false,
     statisticsContainer: true,
-    welcomeContainer: false,
-    helpContainer: false,
-    imagesContainer: false,
     animatedSea: true,
     antarcticaMode: false,
     mouseOverContainerActive: true,
     realTimeSettings: true,
-    countryInfoDisplayIsOpen: false,
-    countryListContainer: false,
     countriesVisited: CountriesVistingDataArray,
-    countrySelected: null,
     sunAndMoon: true,
     displayCountryNames: true,
     isMuted: true,
     vistiedVisible: true,
     unvistedVisible: true,
+  });
+
+  const [mapPageContainerSettings, setMapPageContainerSettings] = useState({
+    settingsMenuIsOpen: false,
+    welcomeContainer: false,
+    helpContainer: false,
+    imagesContainer: false,
+    countryInfoDisplayIsOpen: false,
+    countryListContainer: false,
+    countrySelected: null,
     firstVisitToSite: true,
+    userBanner: true,
   });
 
   useEffect(() => {
@@ -41,8 +45,11 @@ const MapContextProvider = ({ children }) => {
   const closeAllModals = () => {
     setMapPageSettings({
       ...mapPageSettings,
-      settingsMenuIsOpen: false,
       statisticsContainer: false,
+    });
+    setMapPageContainerSettings({
+      ...mapPageContainerSettings,
+      settingsMenuIsOpen: false,
       welcomeContainer: false,
       helpContainer: false,
       imagesContainer: false,
@@ -52,9 +59,16 @@ const MapContextProvider = ({ children }) => {
   };
 
   const toggleMapSettingsContainer = () => {
-    setMapPageSettings({
-      ...mapPageSettings,
-      settingsMenuIsOpen: !mapPageSettings.settingsMenuIsOpen,
+    setMapPageContainerSettings({
+      ...mapPageContainerSettings,
+      settingsMenuIsOpen: !mapPageContainerSettings.settingsMenuIsOpen,
+    });
+  };
+
+  const toggleUserBannerContainer = () => {
+    setMapPageContainerSettings({
+      ...mapPageContainerSettings,
+      userBanner: !mapPageContainerSettings.userBanner,
     });
   };
 
@@ -73,37 +87,38 @@ const MapContextProvider = ({ children }) => {
   };
 
   const toggleUploadImagesContainer = () => {
-    setMapPageSettings({
-      ...mapPageSettings,
-      imagesContainer: !mapPageSettings.imagesContainer,
+    setMapPageContainerSettings({
+      ...mapPageContainerSettings,
+      imagesContainer: !mapPageContainerSettings.imagesContainer,
     });
   };
 
   const toggleHelpSettingsContainer = () => {
-    setMapPageSettings({
-      ...mapPageSettings,
-      helpContainer: !mapPageSettings.helpContainer,
+    setMapPageContainerSettings({
+      ...mapPageContainerSettings,
+      helpContainer: !mapPageContainerSettings.helpContainer,
     });
   };
 
   const toggleCountryInfoContainer = (territory) => {
-    setMapPageSettings({
-      ...mapPageSettings,
-      countryInfoDisplayIsOpen: !mapPageSettings.countryInfoDisplayIsOpen,
+    setMapPageContainerSettings({
+      ...mapPageContainerSettings,
+      countryInfoDisplayIsOpen:
+        !mapPageContainerSettings.countryInfoDisplayIsOpen,
       countrySelected: territory,
     });
   };
 
   const toggleWelcomeMessageContainer = () => {
-    setMapPageSettings({
-      ...mapPageSettings,
-      welcomeContainer: !mapPageSettings.welcomeContainer,
+    setMapPageContainerSettings({
+      ...mapPageContainerSettings,
+      welcomeContainer: !mapPageContainerSettings.welcomeContainer,
     });
   };
   const toggleCountryListContainer = () => {
-    setMapPageSettings({
-      ...mapPageSettings,
-      countryListContainer: !mapPageSettings.countryListContainer,
+    setMapPageContainerSettings({
+      ...mapPageContainerSettings,
+      countryListContainer: !mapPageContainerSettings.countryListContainer,
     });
   };
 
@@ -115,9 +130,9 @@ const MapContextProvider = ({ children }) => {
   };
 
   const toggleNewUserContainer = () => {
-    setMapPageSettings({
-      ...mapPageSettings,
-      firstVisitToSite: !mapPageSettings.firstVisitToSite,
+    setMapPageContainerSettings({
+      ...mapPageContainerSettings,
+      firstVisitToSite: !mapPageContainerSettings.firstVisitToSite,
     });
   };
 
@@ -126,6 +141,8 @@ const MapContextProvider = ({ children }) => {
       value={{
         mapPageSettings,
         setMapPageSettings,
+        mapPageContainerSettings,
+        setMapPageContainerSettings,
         toggleMusic,
         toggleQatToolbar,
         toggleStatsContainer,
@@ -137,6 +154,7 @@ const MapContextProvider = ({ children }) => {
         toggleHelpSettingsContainer,
         closeAllModals,
         toggleNewUserContainer,
+        toggleUserBannerContainer,
       }}
     >
       {children}

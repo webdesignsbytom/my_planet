@@ -10,6 +10,7 @@ import { join } from 'path';
 // Import routers
 import authRouter from './routes/auth.js';
 import userRouter from './routes/users.js';
+import settingsRouter from './routes/settings.js';
 import eventRouter from './routes/events.js';
 
 const app = express();
@@ -37,6 +38,7 @@ const __dirname = path.dirname(__filename);
 app.use('/', authRouter);
 app.use('/users', userRouter);
 app.use('/events', eventRouter);
+app.use('/settings', settingsRouter);
 
 
 // Server interface page

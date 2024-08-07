@@ -16,10 +16,15 @@ import CountryInformationContainer from '../../components/overlays/CountryInform
 import CountriesListContainer from '../../components/overlays/CountriesListContainer';
 import CountrySlideshowContainer from '../../components/overlays/CountrySlideshowContainer';
 import AccountSetUpContainer from '../../components/settings/AccountSetUpContainer';
+import OwnerDisplayContainer from '../../components/overlays/OwnerDisplayContainer';
 
 function MapPage() {
-  const { mapPageSettings, toggleCountryInfoContainer } =
-    useContext(MapContext);
+  const {
+    mapPageSettings,
+    toggleCountryInfoContainer,
+    setMapPageContainerSettings,
+    mapPageContainerSettings,
+  } = useContext(MapContext);
 
   // Mouse position data
   const [activeCountry, setActiveCountry] = useState(null);
@@ -105,7 +110,7 @@ function MapPage() {
       </div>
 
       {/* Settings container */}
-      {mapPageSettings.settingsMenuIsOpen && <SettingsMainContainer />}
+      {mapPageContainerSettings.settingsMenuIsOpen && <SettingsMainContainer />}
 
       {/* Right hand settings and other menu */}
       {mapPageSettings.rightQatMenu && <RightSideQatToolbar />}
@@ -114,19 +119,26 @@ function MapPage() {
       {mapPageSettings.statisticsContainer && <StatisticsContainer />}
 
       {/* Upload images container */}
-      {mapPageSettings.imagesContainer && <UploadImagesContainer />}
+      {mapPageContainerSettings.imagesContainer && <UploadImagesContainer />}
 
       {/* Welcome back message container */}
-      {mapPageSettings.welcomeContainer && <WelcomeBackContainer />}
+      {mapPageContainerSettings.welcomeContainer && <WelcomeBackContainer />}
 
       {/* Country list container */}
-      {mapPageSettings.countryListContainer && <CountriesListContainer />}
+      {mapPageContainerSettings.countryListContainer && (
+        <CountriesListContainer />
+      )}
 
       {/* Country information container */}
-      {mapPageSettings.countryInfoDisplayIsOpen && (
+      {mapPageContainerSettings.countryInfoDisplayIsOpen && (
         <CountryInformationContainer />
       )}
-      {mapPageSettings.firstVisitToSite && <AccountSetUpContainer />}
+
+      {/* Account set up */}
+      {mapPageContainerSettings.firstVisitToSite && <AccountSetUpContainer />}
+
+      {/* User banner */}
+      {mapPageContainerSettings.firstVisitToSite && <OwnerDisplayContainer />}
 
       {/* Display Box - images and songs */}
       {hoveredCountry && (

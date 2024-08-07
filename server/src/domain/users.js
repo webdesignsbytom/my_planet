@@ -44,6 +44,43 @@ export const createUser = (email, password) =>
     },
   });
 
+export const createNewProfile = (userId, profileData) =>
+  dbClient.profile.create({
+    data: {
+      userId: userId,
+      email: profileData.email,
+      firstName: profileData.firstName,
+      lastName: profileData.lastName,
+      preferedName: profileData.preferedName,
+      gender: profileData.gender,
+      countryOfBirth: profileData.countryOfBirth,
+      favoriteCountry: profileData.favoriteCountry,
+      hobbies: profileData.hobbies,
+      instagramId: profileData.instagramId,
+      specialHashtags: profileData.specialHashtags,
+      hiddenHashtags: profileData.hiddenHashtags,
+    },
+  });
+
+export const updateProfileById = async (profileId, profileData) => {
+  return dbClient.profile.update({
+    where: {
+      id: profileId,
+    },
+    data: {
+      ...profileData,
+    },
+  });
+};
+
+export const getProfileById = async (profileId) => {
+  return dbClient.profile.findUnique({
+    where: {
+      id: profileId,
+    },
+  });
+};
+
 export const findVerification = (userId) =>
   dbClient.userVerification.findUnique({
     where: {

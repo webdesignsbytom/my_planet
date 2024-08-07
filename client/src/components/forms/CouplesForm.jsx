@@ -1,15 +1,62 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+// Components
 import GenderSelectP1 from '../../utils/user/GenderSelectP1';
 import GenderSelectP2 from '../../utils/user/GenderSelectP2';
 import BirthCountrySelectP1 from '../../utils/user/BirthCountrySelectP1';
 import BirthCountrySelectP2 from '../../utils/user/BirthCountrySelectP2';
 import FavoriteCountrySelectP1 from '../../utils/user/FavoriteCountrySelectP1';
 import FavoriteCountrySelectP2 from '../../utils/user/FavoriteCountrySelectP2';
+// Api
+import client from '../../api/client';
+// Context
+import { UserContext } from '../../context/UserContext';
+// Constants
+import { COUPLES_POST_API } from '../../utils/Constants';
 
-function CouplesForm({ handleSubmitCouplesForm }) {
-    
+function CouplesForm() {
+  const { user, setUser } = useContext(UserContext);
+  const [formData, setFormData] = useState({
+    firstNamePerson1: '',
+    lastNamePerson1: '',
+    preferedNamePerson1: '',
+    genderPerson1: '',
+    birthCountryPerson1: '',
+    favoriteCountryPerson1: '',
+    hobbiesPerson1: '',
+    instagramIdPerson1: '',
+    specialHashtagsPerson1: '',
+    hiddenHashtagsPerson1: '',
+    firstNamePerson2: '',
+    lastNamePerson2: '',
+    preferedNamePerson2: '',
+    genderPerson2: '',
+    birthCountryPerson2: '',
+    favoriteCountryPerson2: '',
+    hobbiesPerson2: '',
+    instagramIdPerson2: '',
+    specialHashtagsPerson2: '',
+    hiddenHashtagsPerson2: '',
+  });
+
   const handleChange = (event) => {
     const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmitCouplesForm = async (event) => {
+    event.preventDefault();
+    client
+      .post(`${COUPLES_POST_API}/${user.id}`, formData, false)
+      .then((res) => {
+        setUser(res.data.data.updateUser);
+      })
+
+      .catch((err) => {
+        console.error('Unable to create single profile', err);
+      });
   };
 
   return (
@@ -27,6 +74,7 @@ function CouplesForm({ handleSubmitCouplesForm }) {
             name='firstNamePerson1'
             className='form-control block w-full px-3 py-1.5 mb-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
             placeholder='First Name'
+            value={formData.firstNamePerson1}
             onChange={handleChange}
           />
         </div>
@@ -38,6 +86,7 @@ function CouplesForm({ handleSubmitCouplesForm }) {
             name='lastNamePerson1'
             className='form-control block w-full px-3 py-1.5 mb-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
             placeholder='Last Name'
+            value={formData.lastNamePerson1}
             onChange={handleChange}
           />
         </div>
@@ -52,6 +101,7 @@ function CouplesForm({ handleSubmitCouplesForm }) {
             name='preferedNamePerson1'
             className='form-control block w-full px-3 py-1.5 mb-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
             placeholder='Prefered Name'
+            value={formData.preferedNamePerson1}
             onChange={handleChange}
           />
         </div>
@@ -73,7 +123,6 @@ function CouplesForm({ handleSubmitCouplesForm }) {
         </div>
       </div>
 
-      {/* Person 2 */}
       <div className='pb-1'>
         <label>Person 2</label>
       </div>
@@ -87,6 +136,7 @@ function CouplesForm({ handleSubmitCouplesForm }) {
             name='firstNamePerson2'
             className='form-control block w-full px-3 py-1.5 mb-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
             placeholder='First Name'
+            value={formData.firstNamePerson2}
             onChange={handleChange}
           />
         </div>
@@ -98,6 +148,7 @@ function CouplesForm({ handleSubmitCouplesForm }) {
             name='lastNamePerson2'
             className='form-control block w-full px-3 py-1.5 mb-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
             placeholder='Last Name'
+            value={formData.lastNamePerson2}
             onChange={handleChange}
           />
         </div>
@@ -112,6 +163,7 @@ function CouplesForm({ handleSubmitCouplesForm }) {
             name='preferedNamePerson2'
             className='form-control block w-full px-3 py-1.5 mb-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
             placeholder='Prefered Name'
+            value={formData.preferedNamePerson2}
             onChange={handleChange}
           />
         </div>
@@ -146,6 +198,7 @@ function CouplesForm({ handleSubmitCouplesForm }) {
           title='Seperate hobbies with a comma ,'
           className='form-control block w-full px-3 py-1.5 mb-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
           placeholder='Hobbies, climbing, scuba, wine'
+          value={formData.hobbiesPerson1}
           onChange={handleChange}
         />
       </div>
@@ -160,6 +213,7 @@ function CouplesForm({ handleSubmitCouplesForm }) {
           title='Where we locate images'
           className='form-control block w-full px-3 py-1.5 mb-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
           placeholder='@projectworld'
+          value={formData.instagramIdPerson1}
           onChange={handleChange}
         />
       </div>
@@ -172,11 +226,12 @@ function CouplesForm({ handleSubmitCouplesForm }) {
         </label>
         <input
           type='text'
-          id='hobbies'
-          name='hobbies'
+          id='specialHashtagsPerson1'
+          name='specialHashtagsPerson1'
           title='Seperate Hashtags we search for that you want pronounced'
           className='form-control block w-full px-3 py-1.5 mb-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
           placeholder='#splurg-city'
+          value={formData.specialHashtagsPerson1}
           onChange={handleChange}
         />
       </div>
@@ -188,11 +243,12 @@ function CouplesForm({ handleSubmitCouplesForm }) {
         </label>
         <input
           type='text'
-          id='hiddenHashtags'
-          name='hiddenHashtags'
+          id='hiddenHashtagsPerson1'
+          name='hiddenHashtagsPerson1'
           title='Seperate Hashtags we search for that you want pronounced'
           className='form-control block w-full px-3 py-1.5 mb-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
           placeholder='#funerals'
+          value={formData.hiddenHashtagsPerson1}
           onChange={handleChange}
         />
       </div>
@@ -205,15 +261,6 @@ function CouplesForm({ handleSubmitCouplesForm }) {
           className='inline-block px-6 py-2.5 mt-4 w-full bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-800 hover:shadow-lg focus:bg-blue-800 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-900 active:shadow-lg transition duration-150 ease-in-out'
         >
           Submit
-          {/* {!registrationFormData.active && !registrationFormData.success && (
-          <span>Sign Up</span>
-        )}
-        {registrationFormData.active && (
-          <span className='flex items-center justify-center'>
-            <LoadingSpinner width={'w-5'} height={'h-5'} />
-          </span>
-        )}
-        {registrationFormData.success && <span>Success!</span>} */}
         </button>
       </div>
     </form>

@@ -5,7 +5,13 @@ import { ToggleContext } from '../../context/ToggleContext';
 import { UserContext } from '../../context/UserContext';
 import { MapContext } from '../../context/MapContext';
 // Icons
-import { IoLogOut, IoVolumeHigh, IoVolumeMute, IoHome, IoSettings } from 'react-icons/io5';
+import {
+  IoLogOut,
+  IoVolumeHigh,
+  IoVolumeMute,
+  IoHome,
+  IoSettings,
+} from 'react-icons/io5';
 import { IoIosStats, IoIosImages } from 'react-icons/io';
 import { FaListOl } from 'react-icons/fa';
 // Constants

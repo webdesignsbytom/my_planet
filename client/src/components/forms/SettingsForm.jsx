@@ -14,10 +14,13 @@ function SettingsForm() {
 
   const handleSubmitSettingsUpdates = (event) => {
     event.preventDefault();
-  }
+  };
 
   return (
-    <form className='grid gap-2 px-4 overflow-y-scroll' onSubmit={handleSubmitSettingsUpdates}>
+    <form
+      className='grid gap-2 px-4 overflow-y-scroll'
+      onSubmit={handleSubmitSettingsUpdates}
+    >
       <input
         type='email'
         id='email'

@@ -10,6 +10,12 @@ export const ERROR_404_PAGE_URL = '*';
 
 // API
 export const LOGIN_API = '/login';
+export const REGISTER_API = '/users/register';
+export const SINGLE_PERSON_POST_API = '/users/create-single-person-profile'; // userId
+export const COUPLES_POST_API = '/users/create-couples-profile'; // userId
+export const UPDATE_PROFILE_API = '/users/update-user-profile'; // profileId
+export const GET_PROFILE_API = '/users/get-profile-by-id'; // profileId
+export const UPDATE_SETTINGS_API = '/settings/settings-update'; // userId
 
 // Company data
-export const CompanyName = 'myPlanet'
+export const CompanyName = 'myPlanet';

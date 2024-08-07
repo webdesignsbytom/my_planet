@@ -21,13 +21,13 @@ export const EVENT_MESSAGES = {
   eventNotFound: `Failed to find event`,
   createEventFail: `Failed to create event`,
   eventNotDeleted: `Failed to delete event`,
-  // Simulations
-  simulationTag: `Simulation database`,
-  simulationNotFound: `Failed to find simulation`,
-  createSimulationFail: `Failed to create simulation`,
-  updateSimulationFail: `Failed to update simulation`,
-  simulationNotDeleted: `Failed to delete simulation`,
-  simulationFieldMissing: `Missing simulation field data in request`,
+  // Settings
+  settingTag: `Setting database`,
+  settingNotFound: `Failed to find setting`,
+  createSettingsFail: `Failed to create setting`,
+  updateSettingsFail: `Failed to update setting`,
+  settingNotDeleted: `Failed to delete setting`,
+  settingFieldMissing: `Missing setting field data in request`,
   // Users
   userTag: `User databased`,
   userNotFound: `Failed to find user/s`,
