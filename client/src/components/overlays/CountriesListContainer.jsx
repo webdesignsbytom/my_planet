@@ -5,7 +5,8 @@ import { IoCloseCircleOutline } from 'react-icons/io5';
 import { MapContext } from '../../context/MapContext';
 
 function CountriesListContainer() {
-  const { mapPageSettings, setMapPageSettings, toggleCountryListContainer } = useContext(MapContext);
+  const { mapPageSettings, setMapPageSettings, toggleCountryListContainer } =
+    useContext(MapContext);
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {
@@ -19,15 +20,15 @@ function CountriesListContainer() {
       idx === index ? { ...country, hasVisited: !country.hasVisited } : country
     );
     setCountries(updatedCountries);
-    setMapPageSettings(prevSettings => ({
+    setMapPageSettings((prevSettings) => ({
       ...prevSettings,
-      countriesVisited: updatedCountries
+      countriesVisited: updatedCountries,
     }));
   };
 
   return (
     <section
-      className={`grid absolute z-40 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-1/2 w-1/2 ${mapPageSettings.selectedStyle.styleSettings.backgroundColour} rounded-lg shadow-xl`}
+      className={`grid absolute z-40 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-1/2 w-1/2 ${mapPageSettings.selectedStyle.styleSettings.backgroundColour} ${mapPageSettings.selectedStyle.styleSettings.mainTextColour} rounded-lg shadow-xl`}
     >
       <div className='grid grid-rows-reg relative overflow-hidden'>
         {/* Close button */}
@@ -37,7 +38,7 @@ function CountriesListContainer() {
         >
           <IoCloseCircleOutline
             size={35}
-            className='hover:brightness-125 cursor-pointer text-gray-000 hover:shadow-xl rounded-full active:scale-95'
+            className={`hover:brightness-75 cursor-pointer text-gray-000 hover:shadow-xl rounded-full active:scale-95 ${mapPageSettings.selectedStyle.styleSettings.mainTextColour}`}
           />
         </button>
 
@@ -52,7 +53,10 @@ function CountriesListContainer() {
           <section className='grid h-full overflow-hidden py-2'>
             <div className='grid h-full overflow-y-auto'>
               {countries.map((country, index) => (
-                <div key={index} className='flex items-center justify-between px-4 py-2'>
+                <div
+                  key={index}
+                  className='flex items-center justify-between px-4 py-2'
+                >
                   <span>{country.countryName}</span>
                   <input
                     type='checkbox'

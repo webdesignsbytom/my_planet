@@ -11,7 +11,10 @@ export const DisplaySettingsArray = [
     styleSettings: {
       backgroundColour: 'bg-white',
       altBackgroundColour: 'bg-blue-500',
-      buttonColour: 'bg-white'
+      buttonColour: 'bg-white',
+      mainTextColour: 'text-black',
+      altTextColour: 'text-white',
+      borderColour: 'border-black'
     }
   },
   {
@@ -21,7 +24,10 @@ export const DisplaySettingsArray = [
     styleSettings: {
       backgroundColour: 'bg-[#dcbc90]',
       altBackgroundColour: 'bg-red-500',
-      buttonColour: 'bg-[#dcbc90]'
+      buttonColour: 'bg-[#dcbc90]',
+      mainTextColour: 'text-black',
+      altTextColour: 'text-white',
+      borderColour: 'border-black'
     }
   },
   {
@@ -31,7 +37,10 @@ export const DisplaySettingsArray = [
     styleSettings: {
       backgroundColour: 'bg-[#dcbc90]',
       altBackgroundColour: 'bg-white',
-      buttonColour: 'bg-[#dcbc90]'
+      buttonColour: 'bg-[#dcbc90]',
+      mainTextColour: 'text-black',
+      altTextColour: 'text-white',
+      borderColour: 'border-black'
     }
   },
   {
@@ -39,9 +48,12 @@ export const DisplaySettingsArray = [
     title: 'Galaxy',
     backgroundImage: GalaxyBackground,
     styleSettings: {
-      backgroundColour: 'bg-blue-500',
+      backgroundColour: 'bg-black',
       altBackgroundColour: 'bg-white',
-      buttonColour: 'bg-[#dcbc90]'
+      buttonColour: 'bg-[#dcbc90]',
+      mainTextColour: 'text-white',
+      altTextColour: 'text-black',
+      borderColour: 'border-white'
     }
   },
 ];

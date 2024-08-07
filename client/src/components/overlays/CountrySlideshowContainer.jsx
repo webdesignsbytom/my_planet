@@ -33,13 +33,13 @@ function CountrySlideshowContainer({
       }}
     >
       <article
-        className={`${mapPageSettings.selectedStyle.styleSettings.backgroundColour} p-4 border-2 border-solid border-black rounded-lg w-[300px] overflow-hidden shadow-2xl`}
+        className={`${mapPageSettings.selectedStyle.styleSettings.backgroundColour} p-4 border-2 border-solid ${mapPageSettings.selectedStyle.styleSettings.borderColour} rounded-lg w-[300px] overflow-hidden shadow-2xl ${mapPageSettings.selectedStyle.styleSettings.mainTextColour}`}
       >
         <div className='grid grid-rows-reg gap-2'>
           <div className='shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-lg text-center'>
             <h2
               id='namep'
-              className='font-poppins text-xl font-semibold text-black'
+              className='font-poppins text-xl font-semibold'
             >
               {hoveredCountry}
             </h2>
@@ -49,7 +49,7 @@ function CountrySlideshowContainer({
         </audio> */}
           <div className='w-full h-full overflow-hidden shadow-lg'>
             <img
-              className='object-cover w-full h-full border-2 border-solid border-black rounded-lg'
+              className={`object-cover w-full h-full border-2 border-solid ${mapPageSettings.selectedStyle.styleSettings.borderColour}  rounded-lg`}
               src={tempDataArray[currentIndex].data}
               alt='things'
             />

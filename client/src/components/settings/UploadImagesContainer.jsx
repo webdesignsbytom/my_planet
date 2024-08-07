@@ -9,9 +9,9 @@ function UploadImagesContainer() {
     useContext(MapContext);
   return (
     <section
-      className={`grid absolute z-40 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-1/2 w-1/2 ${mapPageSettings.selectedStyle.styleSettings.backgroundColour} rounded-lg shadow-xl`}
+      className={`grid absolute z-40 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-1/2 w-1/2 ${mapPageSettings.selectedStyle.styleSettings.backgroundColour} ${mapPageSettings.selectedStyle.styleSettings.mainTextColour} rounded-lg border-2 border-solid ${mapPageSettings.selectedStyle.styleSettings.borderColour} shadow-xl`}
     >
-      <div className='relative grid outline outline-1 outline-black rounded-lg'>
+      <div className='relative grid  rounded-lg'>
         {/* Close button */}
         <button
           className='absolute grid right-4 top-4'
@@ -19,7 +19,7 @@ function UploadImagesContainer() {
         >
           <IoCloseCircleOutline
             size={35}
-            className='hover:brightness-125 cursor-pointer text-gray-000 hover:shadow-xl rounded-full active:scale-95'
+            className={`hover:brightness-75 cursor-pointer text-gray-000 hover:shadow-xl rounded-full active:scale-95 ${mapPageSettings.selectedStyle.styleSettings.mainTextColour}`}
           />
         </button>
 
