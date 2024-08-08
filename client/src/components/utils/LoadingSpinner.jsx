@@ -1,10 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-function LoadingSpinner({ height, width }) {
+function LoadingSpinner({ sm, md, lg }) {
+  const [size, setSize] = useState({
+    width: 'w-8',
+    height: 'h-8',
+  });
+
+  useEffect(() => {
+    if (sm) {
+      setSize({
+        width: 'w-8',
+        height: 'h-8',
+      });
+    } else if (md) {
+      setSize({
+        width: 'w-12',
+        height: 'h-12',
+      });
+    } else if (lg) {
+      setSize({
+        width: 'w-20',
+        height: 'h-20',
+      });
+    }
+  }, []);
+
   return (
     <>
       <svg
-        className={`${width} ${height} text-gray-200 animate-spin dark:text-gray-600 fill-blue-600`}
+        className={`${size.width} ${size.height} text-gray-200 animate-spin dark:text-gray-600 fill-blue-600`}
         viewBox='0 0 100 101'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'

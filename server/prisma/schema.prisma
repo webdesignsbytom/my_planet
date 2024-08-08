@@ -55,7 +55,6 @@ model Setting {
 
 model Profile {
   id              String  @id @default(uuid())
-  name            String
   instagramId     String?
   customHashtag   String?
   firstName       String?

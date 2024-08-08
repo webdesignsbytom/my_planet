@@ -1,15 +1,24 @@
 import React, { useContext, useState } from 'react';
 // Context
 import { UserContext } from '../../context/UserContext';
+import { MapContext } from '../../context/MapContext';
 // Components
 import BirthCountrySelectP1 from '../../utils/user/BirthCountrySelectP1';
 import FavoriteCountrySelectP1 from '../../utils/user/FavoriteCountrySelectP1';
+// Utils
 import GenderSelectP1 from '../../utils/user/GenderSelectP1';
+import LoadingSpinner from '../utils/LoadingSpinner';
+// Api
 import client from '../../api/client';
+// Constants
 import { SINGLE_PERSON_POST_API } from '../../utils/Constants';
 
 function SinglePersonForm() {
   const { user, setUser } = useContext(UserContext);
+  const { toggleNewUserContainer } = useContext(MapContext);
+  const [isLoading, setIsLoading] = useState(false);
+
+  console.log('user pppp', user);
 
   const [formData, setFormData] = useState({
     firstNamePerson1: '',
@@ -33,15 +42,18 @@ function SinglePersonForm() {
   };
 
   const handleSubmitSinglePersonForm = async (event) => {
+    setIsLoading(true);
     event.preventDefault();
     client
       .post(`${SINGLE_PERSON_POST_API}/${user.id}`, formData, false)
       .then((res) => {
-        setUser(res.data.data.updateUser);
+        setUser(res.data.data.createdProfile);
+        setIsLoading(false);
       })
 
       .catch((err) => {
         console.error('Unable to create single profile', err);
+        setIsLoading(false);
       });
   };
 
@@ -186,7 +198,13 @@ function SinglePersonForm() {
           data-mdb-ripple-color='light'
           className='inline-block px-6 py-2.5 mt-4 w-full bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-800 hover:shadow-lg focus:bg-blue-800 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-900 active:shadow-lg transition duration-150 ease-in-out'
         >
-          Submit
+          {isLoading ? (
+            <div className='grid justify-center'>
+              <LoadingSpinner sm={true} />
+            </div>
+          ) : (
+            'Submit'
+          )}
         </button>
       </div>
     </form>

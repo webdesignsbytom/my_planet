@@ -1,10 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 // Context
 import { ToggleContext } from '../../context/ToggleContext';
 import { UserContext } from '../../context/UserContext';
 // Constants
-import { HOME_PAGE_URL, MAP_PAGE_URL } from '../../utils/Constants';
+import { HOME_PAGE_URL } from '../../utils/Constants';
 // Components
 import Navbar from '../../components/nav/Navbar';
 // Images
@@ -16,23 +15,13 @@ function HomePage() {
   const { user } = useContext(UserContext);
   const { closeAllModals } = useContext(MapContext);
 
-  let navigate = useNavigate();
-
   useEffect(() => {
     closeAllModals();
   }, []);
   
   useEffect(() => {
     setActiveNav(HOME_PAGE_URL);
-
-    if (user.id) {
-      navigateToMapPage();
-    }
-  }, [user]);
-
-  const navigateToMapPage = () => {
-    navigate(MAP_PAGE_URL, { replace: true });
-  };
+  }, []);
 
   return (
     <div className='grid font-poppins h-screen max-h-screen overflow-hidden'>

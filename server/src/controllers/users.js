@@ -176,7 +176,6 @@ export const createSinglePersonProfile = async (req, res) => {
 
   const { userId } = req.params;
   const {
-    email,
     firstNamePerson1,
     lastNamePerson1,
     preferedNamePerson1,
@@ -189,7 +188,6 @@ export const createSinglePersonProfile = async (req, res) => {
     hiddenHashtagsPerson1,
   } = req.body;
 
-  const lowerCaseEmail = email.toLowerCase();
 
   try {
     // Create profile for the existing user
