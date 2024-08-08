@@ -57,7 +57,9 @@ function MapSettings() {
   ];
 
   return (
-    <section className={`grid p-4 h-fit gap-2 ${mapPageSettings.selectedStyle.styleSettings.mainTextColour}`}>
+    <section
+      className={`grid p-4 h-fit gap-2 ${mapPageSettings.selectedStyle.styleSettings.mainTextColour}`}
+    >
       {mapContainerSettings.map((item, index) => (
         <div key={index} className='flex items-center'>
           <span className='flex-1'>{item.label}</span>

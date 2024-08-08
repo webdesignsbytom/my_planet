@@ -18,7 +18,7 @@ function SettingsForm() {
 
   return (
     <form
-      className='grid gap-2 px-4 overflow-y-scroll'
+      className='grid gap-2 px-4 overflow-y-auto'
       onSubmit={handleSubmitSettingsUpdates}
     >
       <input
@@ -78,24 +78,14 @@ function SettingsForm() {
       />
 
       {/* Submit button */}
-      <div>
+      <div className='pb-4'>
         <button
           type='submit'
           data-mdb-ripple='true'
           data-mdb-ripple-color='light'
           className='inline-block px-6 py-2.5 w-full bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-800 hover:shadow-lg focus:bg-blue-800 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-900 active:shadow-lg transition duration-150 ease-in-out'
         >
-          {' '}
           Submit
-          {/* {!registrationFormData.active && !registrationFormData.success && (
-            <span>Sign Up</span>
-          )}
-          {registrationFormData.active && (
-            <span className='flex items-center justify-center'>
-              <LoadingSpinner width={'w-5'} height={'h-5'} />
-            </span>
-          )}
-          {registrationFormData.success && <span>Success!</span>} */}
         </button>
       </div>
     </form>

@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 // Components
-import SettingsForm from '../forms/SettingsForm'
+import SettingsForm from '../forms/SettingsForm';
 
 function UserSettings() {
   return (
     <section className='grid mt-4 overflow-hidden'>
-    <SettingsForm />
-  </section>
-  )
+      <SettingsForm />
+    </section>
+  );
 }
 
-export default UserSettings
+export default UserSettings;

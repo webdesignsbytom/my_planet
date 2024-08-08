@@ -72,7 +72,9 @@ function SettingsMainContainer() {
             </h4>
           </div>
         </article>
-        <div className='grid h-full overflow-y-auto'>
+
+        {/* Buttons */}
+        <div className='grid h-full w-full items-center justify-center'>
           {selectedSettingsOption ? (
             renderSelectedOption()
           ) : (
