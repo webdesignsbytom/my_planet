@@ -7,7 +7,7 @@ import { MapContext } from '../../context/MapContext';
 function CountriesListContainer() {
   const { mapPageSettings, setMapPageSettings, toggleCountryListContainer } =
     useContext(MapContext);
-  const [countries, setCountries] = useState([]);
+  const [countries, setCountries] = useState([1]);
 
   useEffect(() => {
     if (mapPageSettings && mapPageSettings.countriesVisited) {

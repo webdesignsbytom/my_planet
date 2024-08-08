@@ -12,7 +12,7 @@ function CountrySlideshowContainer({
   audioRef,
 }) {
   const { mapPageSettings } = useContext(MapContext);
-
+  // console.log('hoveredCountryfff', hoveredCountry);
   const [tempDataArray, setTempDataArray] = useState(TempImageArray);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -22,6 +22,7 @@ function CountrySlideshowContainer({
     }, 5000);
   }, []);
 
+  console.log('country', hoveredCountry);
   return (
     <section
       id='name'
@@ -29,7 +30,7 @@ function CountrySlideshowContainer({
         position: 'absolute',
         top: `${tooltipPosition.y - 100}px`,
         left: `${tooltipPosition.x + 100}px`,
-        opacity: hoveredCountry ? 1 : 0,
+        opacity: hoveredCountry.id ? 1 : 0,
       }}
     >
       <article
@@ -37,11 +38,8 @@ function CountrySlideshowContainer({
       >
         <div className='grid grid-rows-reg gap-2'>
           <div className='shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-lg text-center'>
-            <h2
-              id='namep'
-              className='font-poppins text-xl font-semibold'
-            >
-              {hoveredCountry}
+            <h2 id='namep' className='font-poppins text-xl font-semibold'>
+              {hoveredCountry.id}
             </h2>
           </div>
           {/* <audio ref={audioRef} src={Music1} loop autoPlay>
@@ -50,8 +48,8 @@ function CountrySlideshowContainer({
           <div className='w-full h-full overflow-hidden shadow-lg'>
             <img
               className={`object-cover w-full h-full border-2 border-solid ${mapPageSettings.selectedStyle.styleSettings.borderColour}  rounded-lg`}
-              src={tempDataArray[currentIndex].data}
-              alt='things'
+              src={hoveredCountry.posterImageUrl}
+              alt={`${hoveredCountry.countryName}`}
             />
           </div>
         </div>

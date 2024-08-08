@@ -23,9 +23,9 @@ function CountryObject({
             ? '#66ff66'
             : country.defaultColor
         }
-        onMouseOver={() => handleMouseOver(territory.id)}
+        onMouseOver={() => handleMouseOver(country)}
         onMouseLeave={handleMouseLeave}
-        onMouseUp={() => exploreCountry(territory)}
+        onMouseUp={() => exploreCountry(country)}
       />
     </g>
   );

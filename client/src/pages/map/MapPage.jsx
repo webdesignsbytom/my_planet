@@ -27,14 +27,15 @@ function MapPage() {
   } = useContext(MapContext);
 
   // Mouse position data
-  const [activeCountry, setActiveCountry] = useState(null);
+  const [activeCountryId, setActiveCountryId] = useState(null);
   const [hoveredCountry, setHoveredCountry] = useState(null);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
   // Mouse position
-  const handleMouseOver = (countryId) => {
-    setHoveredCountry(countryId);
-    setActiveCountry(countryId);
+  const handleMouseOver = (country) => {
+    console.log('MOUSE COUNTRTY', country);
+    setHoveredCountry(country);
+    setActiveCountryId(country.id);
 
     window.onmousemove = (e) => {
       setTooltipPosition({ x: e.clientX, y: e.clientY });
@@ -43,7 +44,7 @@ function MapPage() {
 
   const handleMouseLeave = () => {
     setHoveredCountry(null);
-    setActiveCountry(null);
+    setActiveCountryId(null);
 
     window.onmousemove = null;
   };
@@ -97,7 +98,7 @@ function MapPage() {
                   country={country}
                   territory={territory}
                   hoveredCountry={hoveredCountry}
-                  activeCountry={activeCountry}
+                  activeCountryId={activeCountryId}
                   handleMouseOver={handleMouseOver}
                   handleMouseLeave={handleMouseLeave}
                   visited={country.visited}
