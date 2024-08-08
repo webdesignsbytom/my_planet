@@ -43,6 +43,7 @@ function SinglePersonForm() {
 
   const handleSubmitSinglePersonForm = async (event) => {
     setIsLoading(true);
+    
     event.preventDefault();
     client
       .post(`${SINGLE_PERSON_POST_API}/${user.id}`, formData, false)

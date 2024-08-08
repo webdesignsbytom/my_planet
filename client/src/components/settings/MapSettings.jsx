@@ -92,7 +92,7 @@ function MapSettings() {
       <section className='grid'>
         <div className='grid pb-4'>Map Style</div>
         <div className='grid h-full overflow-y-auto'>
-          <section className='grid grid-cols-3 gap-y-6 h-fit'>
+          <section className='grid grid-cols-3 gap-y-6 gap-x-4 h-fit'>
             {DisplaySettingsArray.map((display, index) => (
               <div key={index} className='grid'>
                 <div className='grid justify-center'>

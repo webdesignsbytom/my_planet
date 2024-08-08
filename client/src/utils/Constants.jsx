@@ -16,6 +16,7 @@ export const COUPLES_POST_API = '/users/create-couples-profile'; // userId
 export const UPDATE_PROFILE_API = '/users/update-user-profile'; // profileId
 export const GET_PROFILE_API = '/users/get-profile-by-id'; // profileId
 export const UPDATE_SETTINGS_API = '/settings/settings-update'; // userId
+export const UPLOAD_IMAGE_API = '/images/upload-image'; // userId
 
 // Company data
 export const CompanyName = 'myPlanet';

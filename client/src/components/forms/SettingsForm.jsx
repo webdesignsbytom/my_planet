@@ -29,53 +29,6 @@ function SettingsForm() {
         placeholder='Recovery Email address: '
         onChange={handleChange}
       />
-      {/* User one name */}
-      <input
-        type='text'
-        id='userOneName'
-        name='userOneName'
-        className='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
-        placeholder='User One Name:'
-        onChange={handleChange}
-      />
-      {/* User two name */}
-      <input
-        type='text'
-        id='userTwoName'
-        name='userTwoName'
-        className='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-ntwo'
-        placeholder='User Two Name:'
-        onChange={handleChange}
-      />
-      {/* User one instagram */}
-      <input
-        type='text'
-        id='userOneInstagramId'
-        name='userOneInstagramId'
-        className='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-ntwo'
-        placeholder='User One Instagram Id: '
-        onChange={handleChange}
-      />
-
-      {/* User two instagram */}
-      <input
-        type='text'
-        id='userTwoInstagramId'
-        name='userTwoInstagramId'
-        className='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-ntwo'
-        placeholder='User Two Instagram Id: '
-        onChange={handleChange}
-      />
-
-      {/* User two instagram */}
-      <input
-        type='text'
-        id='customHashtag'
-        name='customHashtag'
-        className='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-ntwo'
-        placeholder='Custom Hashtag: '
-        onChange={handleChange}
-      />
 
       {/* Submit button */}
       <div className='pb-4'>
