@@ -12,6 +12,7 @@ import {
   createUser,
   createNewProfile,
   updateProfileById,
+  findUserByEmailAdminCheck,
 } from '../domain/users.js';
 // Response messages
 import {
@@ -119,8 +120,6 @@ export const getUserByEmail = async (req, res) => {
 };
 
 export const registerNewUser = async (req, res) => {
-  console.log('create new user');
-
   const { email, password, agreedToTerms } = req.body;
   const lowerCaseEmail = email.toLowerCase();
 
@@ -137,8 +136,7 @@ export const registerNewUser = async (req, res) => {
     }
 
     // Check if unique names exist
-    const foundUser = await findUserByEmail(lowerCaseEmail);
-
+    const foundUser = await findUserByEmailAdminCheck(lowerCaseEmail);
     if (foundUser) {
       return sendDataResponse(res, 400, { email: EVENT_MESSAGES.emailInUse });
     }
@@ -306,7 +304,18 @@ export const updateUserProfile = async (req, res) => {
   console.log('update user profile');
 
   const { profileId } = req.params;
-  const { firstName, lastName, preferedName, gender, countryOfBirth, favoriteCountry, hobbies, instagramId, specialHashtags, hiddenHashtags } = req.body;
+  const {
+    firstName,
+    lastName,
+    preferedName,
+    gender,
+    countryOfBirth,
+    favoriteCountry,
+    hobbies,
+    instagramId,
+    specialHashtags,
+    hiddenHashtags,
+  } = req.body;
 
   try {
     // Update profile with the given data
@@ -320,7 +329,7 @@ export const updateUserProfile = async (req, res) => {
       hobbies,
       instagramId,
       specialHashtags,
-      hiddenHashtags
+      hiddenHashtags,
     });
 
     if (!updatedProfile) {
@@ -343,7 +352,6 @@ export const updateUserProfile = async (req, res) => {
 };
 
 export const getProfileByIdHandler = async (req, res) => {
-
   const { profileId } = req.params;
 
   try {

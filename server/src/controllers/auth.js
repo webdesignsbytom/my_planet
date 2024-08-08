@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 // Database
-import { findUserByEmail } from '../domain/users.js';
+import { findUserByEmail, findUserByEmailAdminCheck } from '../domain/users.js';
 // Responses
 import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
 // Events
@@ -11,6 +11,7 @@ import { createAccessToken } from '../utils/tokens.js';
 
 
 export const login = async (req, res) => {
+  console.log('login');
   const { email, password } = req.body;
   const lowerCaseEmail = email.toLowerCase();
 
@@ -21,7 +22,8 @@ export const login = async (req, res) => {
   }
 
   try {
-    const foundUser = await findUserByEmail(lowerCaseEmail);
+    const foundUser = await findUserByEmailAdminCheck(lowerCaseEmail);
+    console.log('found user', foundUser);
 
     const areCredentialsValid = await validateCredentials(password, foundUser)
 
@@ -33,9 +35,9 @@ export const login = async (req, res) => {
 
     delete foundUser.password
     const token = createAccessToken(foundUser.id, foundUser.email)
-
+console.log('xxxxxxxxxxxxxxx');
     const existingUser = await findUserByEmail(lowerCaseEmail);
-
+console.log('yyyyyyyyyyyyyyy');
     return sendDataResponse(res, 200, { token, existingUser })
 
   } catch (err) {
