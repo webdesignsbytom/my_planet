@@ -18,8 +18,6 @@ function SinglePersonForm() {
   const { toggleNewUserContainer } = useContext(MapContext);
   const [isLoading, setIsLoading] = useState(false);
 
-  console.log('user pppp', user);
-
   const [formData, setFormData] = useState({
     firstNamePerson1: '',
     lastNamePerson1: '',

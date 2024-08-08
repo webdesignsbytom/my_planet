@@ -22,7 +22,7 @@ function StatisticsContainer() {
 
   return (
     <section
-      className='absolute grid left-2 top-2 cursor-pointer'
+      className='absolute grid left-2 top-2 cursor-pointer no__highlights'
       title='World travel statistics (double click to close)'
       onDoubleClick={toggleStatsContainer}
     >

@@ -20,7 +20,7 @@ import CanadaPoster from '../../assets/images/posters/canada.png';
 import ChilePoster from '../../assets/images/posters/chile.png';
 import ChinaPoster from '../../assets/images/posters/china.png';
 import ColombiaPoster from '../../assets/images/posters/colombia.png';
-import Costa_ricaPoster from '../../assets/images/posters/costa_rica.png';
+import CostaRicaPoster from '../../assets/images/posters/costa_rica.png';
 import CubaPoster from '../../assets/images/posters/cuba.png';
 import DenmarkPoster from '../../assets/images/posters/denmark.png';
 import EgyptPoster from '../../assets/images/posters/egypt.png';
@@ -139,7 +139,7 @@ export const CountriesDataArray = [
   {
     id: 'Algeria',
     countryName: 'Algeria',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: AlgeriaPoster,
     visited: false,
     defaultColor: countryColoursArray[3],
     pinX: 1383,
@@ -157,7 +157,7 @@ export const CountriesDataArray = [
   {
     id: 'American Samoa',
     countryName: 'American Samoa',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: AmericanSamoaPoster,
     visited: false,
     defaultColor: countryColoursArray[4],
     pinX: 1383,
@@ -249,7 +249,7 @@ export const CountriesDataArray = [
   {
     id: 'Argentina',
     countryName: 'Argentina',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: ArgentinaPoster,
     visited: false,
     defaultColor: countryColoursArray[2],
     pinX: 1383,
@@ -277,7 +277,7 @@ export const CountriesDataArray = [
   {
     id: 'Armenia',
     countryName: 'Armenia',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: ArmeniaPoster,
     visited: false,
     defaultColor: countryColoursArray[3],
     pinX: 1383,
@@ -300,7 +300,7 @@ export const CountriesDataArray = [
   {
     id: 'Aruba',
     countryName: 'Aruba',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: ArubaPoster,
     visited: false,
     defaultColor: countryColoursArray[4],
     pinX: 1383,
@@ -493,7 +493,7 @@ export const CountriesDataArray = [
   {
     id: 'Bahrain',
     countryName: 'Bahrain',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: BahrainPoster,
     visited: false,
     defaultColor: countryColoursArray[3],
     pinX: 1383,
@@ -511,7 +511,7 @@ export const CountriesDataArray = [
   {
     id: 'Bangladesh',
     countryName: 'Bangladesh',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: BangladeshPoster,
     visited: false,
     defaultColor: countryColoursArray[4],
     pinX: 1383,
@@ -547,7 +547,7 @@ export const CountriesDataArray = [
   {
     id: 'Belarus',
     countryName: 'Belarus',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: BelarusPoster,
     visited: false,
     defaultColor: countryColoursArray[0],
     pinX: 1383,
@@ -655,7 +655,7 @@ export const CountriesDataArray = [
   {
     id: 'Bolivia',
     countryName: 'Bolivia',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: BoliviaPoster,
     visited: false,
     defaultColor: countryColoursArray[0],
     pinX: 1383,
@@ -1203,7 +1203,7 @@ export const CountriesDataArray = [
   {
     id: 'Chile',
     countryName: 'Chile',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: ChilePoster,
     visited: false,
     defaultColor: countryColoursArray[5],
     pinX: 1383,
@@ -1319,7 +1319,7 @@ export const CountriesDataArray = [
   {
     id: 'Costa Rica',
     countryName: 'Costa Rica',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: CostaRicaPoster,
     visited: false,
     defaultColor: countryColoursArray[4],
     pinX: 1383,
@@ -1380,7 +1380,7 @@ export const CountriesDataArray = [
   {
     id: 'Cuba',
     countryName: 'Cuba',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: CubaPoster,
     visited: false,
     defaultColor: countryColoursArray[1],
     pinX: 1383,
@@ -1477,7 +1477,7 @@ export const CountriesDataArray = [
   {
     id: 'Denmark',
     countryName: 'Denmark',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: DenmarkPoster,
     visited: false,
     defaultColor: countryColoursArray[0],
     pinX: 1383,
@@ -1695,7 +1695,7 @@ export const CountriesDataArray = [
   {
     id: 'Ethiopia',
     countryName: 'Ethiopia',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: EthiopaPoster,
     visited: false,
     defaultColor: countryColoursArray[0],
     pinX: 1383,
@@ -2394,7 +2394,7 @@ export const CountriesDataArray = [
   {
     id: 'Hungary',
     countryName: 'Hungary',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: HungaryPoster,
     visited: false,
     defaultColor: countryColoursArray[1],
     pinX: 1383,
@@ -2586,7 +2586,7 @@ export const CountriesDataArray = [
   {
     id: 'Israel',
     countryName: 'Israel',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: IsraelPoster,
     visited: false,
     defaultColor: countryColoursArray[2],
     pinX: 1383,
@@ -2680,7 +2680,7 @@ export const CountriesDataArray = [
   {
     id: 'Jordan',
     countryName: 'Jordan',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: JordanPoster,
     visited: false,
     defaultColor: countryColoursArray[1],
     pinX: 1383,
@@ -2718,7 +2718,7 @@ export const CountriesDataArray = [
   {
     id: 'Kenya',
     countryName: 'Kenya',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: KenyaPoster,
     visited: false,
     defaultColor: countryColoursArray[2],
     pinX: 1383,
@@ -2754,7 +2754,7 @@ export const CountriesDataArray = [
   {
     id: 'Kuwait',
     countryName: 'Kuwait',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: KuwaitPoster,
     visited: false,
     defaultColor: countryColoursArray[4],
     pinX: 1383,
@@ -2792,7 +2792,7 @@ export const CountriesDataArray = [
   {
     id: 'Laos',
     countryName: 'Laos',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: LaosPoster,
     visited: false,
     defaultColor: countryColoursArray[0],
     pinX: 1383,
@@ -2918,7 +2918,7 @@ export const CountriesDataArray = [
   {
     id: 'Lithuania',
     countryName: 'Lithuania',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: LithuaniaPoster,
     visited: false,
     defaultColor: countryColoursArray[0],
     pinX: 1383,
@@ -3039,7 +3039,7 @@ export const CountriesDataArray = [
   {
     id: 'Maldives',
     countryName: 'Maldives',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: MaldivesPoster,
     visited: false,
     defaultColor: countryColoursArray[1],
     pinX: 1383,
@@ -3323,7 +3323,7 @@ export const CountriesDataArray = [
   {
     id: 'Mozambique',
     countryName: 'Mozambique',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: MozambiquePoster,
     visited: false,
     defaultColor: countryColoursArray[4],
     pinX: 1383,
@@ -3708,7 +3708,7 @@ export const CountriesDataArray = [
   {
     id: 'Oman',
     countryName: 'Oman',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: OmanPoster,
     visited: false,
     defaultColor: countryColoursArray[6],
     pinX: 1383,
@@ -3789,7 +3789,7 @@ export const CountriesDataArray = [
   {
     id: 'Panama',
     countryName: 'Panama',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: PanamaPoster,
     visited: false,
     defaultColor: countryColoursArray[0],
     pinX: 1383,
@@ -3840,7 +3840,7 @@ export const CountriesDataArray = [
   {
     id: 'Paraguay',
     countryName: 'Paraguay',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: ParaguayPoster,
     visited: false,
     defaultColor: countryColoursArray[4],
     pinX: 1383,
@@ -3881,7 +3881,7 @@ export const CountriesDataArray = [
   {
     id: 'Philippines',
     countryName: 'Philippines',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: PhilippinesPoster,
     visited: false,
     defaultColor: countryColoursArray[3],
     pinX: 1383,
@@ -4342,7 +4342,7 @@ export const CountriesDataArray = [
   {
     id: 'Serbia',
     countryName: 'Serbia',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: SerbiaPoster,
     visited: false,
     defaultColor: countryColoursArray[5],
     pinX: 1383,
@@ -4362,7 +4362,7 @@ export const CountriesDataArray = [
   {
     id: 'Seychelles',
     countryName: 'Seychelles',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: SeychellesPoster,
     visited: false,
     defaultColor: countryColoursArray[0],
     pinX: 1383,
@@ -4658,7 +4658,7 @@ export const CountriesDataArray = [
   {
     id: 'Somalia',
     countryName: 'Somalia',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: SomaliaPoster,
     visited: false,
     defaultColor: countryColoursArray[1],
     pinX: 1383,
@@ -4904,7 +4904,7 @@ export const CountriesDataArray = [
   {
     id: 'Tajikistan',
     countryName: 'Tajikistan',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: TajikistanPoster,
     visited: false,
     defaultColor: countryColoursArray[3],
     pinX: 1383,
@@ -5083,7 +5083,7 @@ export const CountriesDataArray = [
   {
     id: 'Turkey',
     countryName: 'Turkey',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: TurkeyPoster,
     visited: false,
     defaultColor: countryColoursArray[3],
     pinX: 1383,
@@ -5197,7 +5197,7 @@ export const CountriesDataArray = [
   {
     id: 'Ukraine',
     countryName: 'Ukraine',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: UkranePoster,
     visited: false,
     defaultColor: countryColoursArray[2],
     pinX: 1383,
@@ -5356,7 +5356,7 @@ export const CountriesDataArray = [
   {
     id: 'Uruguay',
     countryName: 'Uruguay',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: UruguayPoster,
     visited: false,
     defaultColor: countryColoursArray[1],
     pinX: 1300,
@@ -5379,7 +5379,7 @@ export const CountriesDataArray = [
   {
     id: 'Uzbekistan',
     countryName: 'Uzbekistan',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: UzbekistanPoster,
     visited: false,
     defaultColor: countryColoursArray[2],
     pinX: 1383,
@@ -5523,7 +5523,7 @@ export const CountriesDataArray = [
   {
     id: 'Venezuela',
     countryName: 'Venezuela',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: VenezuelaPoster,
     visited: false,
     defaultColor: countryColoursArray[5],
     pinX: 1383,

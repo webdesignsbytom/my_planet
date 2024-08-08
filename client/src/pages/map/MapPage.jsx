@@ -17,6 +17,7 @@ import CountriesListContainer from '../../components/overlays/CountriesListConta
 import CountrySlideshowContainer from '../../components/overlays/CountrySlideshowContainer';
 import AccountSetUpContainer from '../../components/settings/AccountSetUpContainer';
 import OwnerDisplayContainer from '../../components/overlays/OwnerDisplayContainer';
+import AnimatedCanvas from '../../components/overlays/AnimatedCanvas';
 
 function MapPage() {
   const {
@@ -33,7 +34,6 @@ function MapPage() {
 
   // Mouse position
   const handleMouseOver = (country) => {
-    console.log('MOUSE COUNTRTY', country);
     setHoveredCountry(country);
     setActiveCountryId(country.id);
 
@@ -58,11 +58,12 @@ function MapPage() {
         </span>
       </div>
 
+      {/* Canvas Background Animation */}
+      <AnimatedCanvas animate={mapPageSettings.animatedSea} />
+
       {/* Map container */}
       <div
-        className={`grid h-screen w-full overflow-hidden md:p-1 ${
-          mapPageSettings.animatedSea && 'animate-ocean-animation'
-        }`}
+        className={`grid h-screen w-full overflow-hidden md:p-1`}
         style={{
           backgroundImage: `url(${mapPageSettings.selectedStyle.backgroundImage})`,
           backgroundSize: 'cover',

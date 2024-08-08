@@ -12,7 +12,6 @@ function CountrySlideshowContainer({
   audioRef,
 }) {
   const { mapPageSettings } = useContext(MapContext);
-  // console.log('hoveredCountryfff', hoveredCountry);
   const [tempDataArray, setTempDataArray] = useState(TempImageArray);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -22,17 +21,55 @@ function CountrySlideshowContainer({
     }, 5000);
   }, []);
 
-  console.log('country', hoveredCountry);
+
+  const topLeftStyle = () => ({
+    position: 'absolute',
+    top: `${tooltipPosition.y + 20}px`,
+    left: `${tooltipPosition.x + 20}px`,
+    opacity: hoveredCountry?.id ? 1 : 0,
+  });
+
+  const topRightStyle = () => ({
+    position: 'absolute',
+    top: `${tooltipPosition.y + 20}px`,
+    left: `${tooltipPosition.x - 320}px`,
+    opacity: hoveredCountry?.id ? 1 : 0,
+  });
+
+  const bottomLeftStyle = () => ({
+    position: 'absolute',
+    top: `${tooltipPosition.y - 320}px`,
+    left: `${tooltipPosition.x + 20}px`,
+    opacity: hoveredCountry?.id ? 1 : 0,
+  });
+
+  const bottomRightStyle = () => ({
+    position: 'absolute',
+    top: `${tooltipPosition.y - 320}px`,
+    left: `${tooltipPosition.x - 320}px`,
+    opacity: hoveredCountry?.id ? 1 : 0,
+  });
+
+  const getScreenStyle = () => {
+    const { width, height } = getWindowDimensions();
+
+    if (tooltipPosition.x > width / 2 && tooltipPosition.y > height / 2) {
+      return bottomRightStyle();
+    } else if (tooltipPosition.x > width / 2 && tooltipPosition.y <= height / 2) {
+      return topRightStyle();
+    } else if (tooltipPosition.x <= width / 2 && tooltipPosition.y > height / 2) {
+      return bottomLeftStyle();
+    } else {
+      return topLeftStyle();
+    }
+  };
+
+  function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    return { width, height };
+  }
   return (
-    <section
-      id='name'
-      style={{
-        position: 'absolute',
-        top: `${tooltipPosition.y - 100}px`,
-        left: `${tooltipPosition.x + 100}px`,
-        opacity: hoveredCountry.id ? 1 : 0,
-      }}
-    >
+    <section id='name' style={getScreenStyle()}>
       <article
         className={`${mapPageSettings.selectedStyle.styleSettings.backgroundColour} p-4 border-2 border-solid ${mapPageSettings.selectedStyle.styleSettings.borderColour} rounded-lg w-[300px] overflow-hidden shadow-2xl ${mapPageSettings.selectedStyle.styleSettings.mainTextColour}`}
       >
