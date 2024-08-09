@@ -9,7 +9,6 @@ import ArmeniaPoster from '../../assets/images/posters/armenia.png';
 import ArubaPoster from '../../assets/images/posters/aruba.png';
 import AustraliaPoster from '../../assets/images/posters/australia.png';
 import AustriaPoster from '../../assets/images/posters/austria.png';
-import BangladeshPoster from '../../assets/images/posters/bangladesh.png';
 import BahrainPoster from '../../assets/images/posters/bahrain.png';
 import BelgiumPoster from '../../assets/images/posters/belgium.png';
 import BrazilPoster from '../../assets/images/posters/brazil.png';
@@ -511,7 +510,7 @@ export const CountriesDataArray = [
   {
     id: 'Bangladesh',
     countryName: 'Bangladesh',
-    posterImageUrl: BangladeshPoster,
+    posterImageUrl: BahrainPoster,
     visited: false,
     defaultColor: countryColoursArray[4],
     pinX: 1383,
