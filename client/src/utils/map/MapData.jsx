@@ -2,6 +2,7 @@
 import OldMapBackground from '../../assets/images/backgrounds/aged_map_background_ships_compasses.png'
 import JupiterBackground from '../../assets/images/backgrounds/jupiter_bands_style_map_background.png'
 import GalaxyBackground from '../../assets/images/backgrounds/galaxy_style_hubble_deep_field_background_map.png'
+import { CountriesDataArray } from '../data/CountriesData';
 
 export const DisplaySettingsArray = [
   {
@@ -55,5 +56,18 @@ export const DisplaySettingsArray = [
       altTextColour: 'text-black',
       borderColour: 'border-white'
     }
+  },
+];
+
+export const MapTypeSettingsArray = [
+  {
+    name: 'regular',
+    title: 'Regular',
+    mapData: CountriesDataArray,
+  },
+  {
+    name: 'detailed',
+    title: 'Detailed',
+    mapData: CountriesDataArray,
   },
 ];

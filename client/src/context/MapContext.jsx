@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 // Data
-import { DisplaySettingsArray } from '../utils/map/MapData';
+import { DisplaySettingsArray, MapTypeSettingsArray } from '../utils/map/MapData';
 import { CountriesVistingDataArray } from '../utils/data/CountriesData';
 
 // Context
@@ -12,6 +12,7 @@ const MapContextProvider = ({ children }) => {
     displayLongitudeAndLatitude: false,
     includeLongitudeAndLatitudeText: false,
     selectedStyle: DisplaySettingsArray[0],
+    mapType: MapTypeSettingsArray[0],
     rightQatMenu: true,
     statisticsContainer: true,
     animatedSea: true,

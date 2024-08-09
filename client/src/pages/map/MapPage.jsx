@@ -94,7 +94,7 @@ function MapPage() {
               )}
 
             {/* Countries Array */}
-            {CountriesDataArray.map((country) =>
+            {mapPageSettings.mapType.map((country) =>
               country.countryBorderPaths.map((territory, index) => (
                 <CountryObject
                   key={`${country.countryName}-${index}`}
