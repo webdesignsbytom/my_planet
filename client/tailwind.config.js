@@ -4,13 +4,20 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        'ocean-animation': 'oceanColourChange 30s infinite' // 5s is the duration, adjust as needed
+        'ocean-animation': 'oceanColourChange 30s infinite', // 5s is the duration, adjust as needed
       },
       backgroundImage: {
         'green-bg': "url('../assets/img/myea/green-bg1.png')",
       },
       boxShadow: {
         'internal-main': 'inset -1px 43px 35px 48px #00000024',
+        'white-complex': `
+        rgba(255, 255, 255, 0.25) 0px 54px 55px, 
+        rgba(255, 255, 255, 0.12) 0px -12px 30px, 
+        rgba(255, 255, 255, 0.12) 0px 4px 6px, 
+        rgba(255, 255, 255, 0.17) 0px 12px 13px, 
+        rgba(255, 255, 255, 0.09) 0px -3px 5px
+      `,
       },
       colors: {
         'main-colour': '#4AAD37',
@@ -47,7 +54,7 @@ module.exports = {
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
         travel: ['TravelFont', 'sans-serif'],
-      },      
+      },
       gridTemplateRows: {
         reg: 'auto 1fr',
         rev: '1fr auto',

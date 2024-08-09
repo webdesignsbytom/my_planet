@@ -109,7 +109,7 @@ function RightSideQatToolbar() {
               to={to}
               onClick={onClick}
               title={title}
-              className={`border-solid border-black border-2 rounded-full text-xl p-1 ${mapPageSettings.selectedStyle.styleSettings.buttonColour} hover:brightness-110 cursor-pointer no__highlights h-[50px] w-[50px] active:scale-95 shadow-lg`}
+              className={`border-solid border-black border-2 rounded-full text-xl p-1 ${mapPageSettings.selectedStyle.styleSettings.buttonColour} hover:brightness-75 shadow-white-complex cursor-pointer no__highlights h-[50px] w-[50px] active:scale-95`}
             >
               <div className='grid h-full items-center justify-center'>
                 {icon}

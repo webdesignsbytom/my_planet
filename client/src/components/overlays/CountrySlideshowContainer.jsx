@@ -15,11 +15,11 @@ function CountrySlideshowContainer({
   const [tempDataArray, setTempDataArray] = useState(TempImageArray);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % TempImageArray.length);
-    }, 5000);
-  }, []);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentIndex((prevIndex) => (prevIndex + 1) % TempImageArray.length);
+  //   }, 5000);
+  // }, []);
 
 
   const topLeftStyle = () => ({

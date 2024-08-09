@@ -63,7 +63,9 @@ function MapPage() {
 
       {/* Map container */}
       <div
-        className={`grid h-screen w-full overflow-hidden md:p-1`}
+        className={`grid h-screen w-full overflow-hidden md:p-1 ${
+          mapPageSettings.animatedSea && 'animate-ocean-animation'
+        }`}
         style={{
           backgroundImage: `url(${mapPageSettings.selectedStyle.backgroundImage})`,
           backgroundSize: 'cover',
