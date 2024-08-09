@@ -49,7 +49,6 @@ import MaliPoster from '../../assets/images/posters/mali.png';
 import MexicoPoster from '../../assets/images/posters/mexico.png';
 import MongoliaPoster from '../../assets/images/posters/mongolia.png';
 import MoroccoPoster from '../../assets/images/posters/morocco.png';
-import MozambiquePoster from '../../assets/images/posters/mozambique.png';
 import NetherlandsPoster from '../../assets/images/posters/netherlands.png';
 import NewZealandPoster from '../../assets/images/posters/new_zealand.png';
 import NorwayPoster from '../../assets/images/posters/norway.png';
@@ -3322,7 +3321,7 @@ export const CountriesDataArray = [
   {
     id: 'Mozambique',
     countryName: 'Mozambique',
-    posterImageUrl: MozambiquePoster,
+    posterImageUrl: MoroccoPoster,
     visited: false,
     defaultColor: countryColoursArray[4],
     pinX: 1383,
