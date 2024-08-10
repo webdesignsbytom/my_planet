@@ -13,7 +13,7 @@ def parse_svg(file_path):
             'countryName': country_id,
             'posterImageUrl': 'NetherlandsPoster',  # Placeholder
             'visited': False,  # Default value
-            'defaultColor': 'countryColoursArray[1]',  # Placeholder
+            'defaultColor': 'CountryColoursArray[1]',  # Placeholder
             'pinX': None,  # Placeholder for pin coordinates
             'pinY': None,  # Placeholder for pin coordinates
             'countryMonuments': [],  # Placeholder for monument data

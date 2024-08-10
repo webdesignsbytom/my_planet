@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 // Data
 import { CountriesDataArray } from '../../utils/data/CountriesData';
+import { DetailedCountryMarkers } from '../../utils/data/DetailedCountryData';
 // Functions
 import { createLongAndLatLines } from '../../utils/map/MapFunctions';
 // Context
@@ -31,6 +32,12 @@ function MapPage() {
   const [activeCountryId, setActiveCountryId] = useState(null);
   const [hoveredCountry, setHoveredCountry] = useState(null);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    DetailedCountryMarkers.forEach(country => {
+      console.log('country =>', country.countryName);
+    });
+  }, [])
 
   // Mouse position
   const handleMouseOver = (country) => {
