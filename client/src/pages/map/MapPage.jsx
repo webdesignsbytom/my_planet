@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 // Data
 import { CountriesDataArray } from '../../utils/data/CountriesData';
 // Functions
@@ -49,6 +49,8 @@ function MapPage() {
     window.onmousemove = null;
   };
 
+  console.log('mapPageSettings', mapPageSettings);
+
   return (
     <div className='grid relative overflow-hidden h-full w-full'>
       {/* Rotate device notice */}
@@ -94,7 +96,7 @@ function MapPage() {
               )}
 
             {/* Countries Array */}
-            {mapPageSettings.mapType.map((country) =>
+            {mapPageSettings.mapType.mapData.map((country) =>
               country.countryBorderPaths.map((territory, index) => (
                 <CountryObject
                   key={`${country.countryName}-${index}`}
