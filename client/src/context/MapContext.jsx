@@ -39,9 +39,9 @@ const MapContextProvider = ({ children }) => {
     userBanner: true,
   });
 
-  useEffect(() => {
-    localStorage.setItem('mapSettings', JSON.stringify(mapPageSettings));
-  }, []);
+  // useEffect(() => {
+  //   localStorage.setItem('mapSettings', JSON.stringify(mapPageSettings));
+  // }, []);
 
   const closeAllModals = () => {
     setMapPageSettings({

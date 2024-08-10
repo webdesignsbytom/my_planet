@@ -33,12 +33,6 @@ function MapPage() {
   const [hoveredCountry, setHoveredCountry] = useState(null);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
-  useEffect(() => {
-    DetailedCountryMarkers.forEach(country => {
-      console.log('country =>', country.countryName);
-    });
-  }, [])
-
   // Mouse position
   const handleMouseOver = (country) => {
     setHoveredCountry(country);

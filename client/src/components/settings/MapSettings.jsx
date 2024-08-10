@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 // Context
 import { MapContext } from '../../context/MapContext';
-import { DisplaySettingsArray } from '../../utils/map/MapData';
+import { DisplaySettingsArray, MapTypeSettingsArray } from '../../utils/map/MapData';
 
 function MapSettings() {
   const {
@@ -24,6 +24,14 @@ function MapSettings() {
       selectedStyle: style,
       animatedSea: style.name === 'animated',
       sunAndMoon: style.name === 'animated',
+    }));
+  };
+
+  const handleMapTypeChange = (map) => {
+    console.log('map', map);
+    setMapPageSettings((prevSettings) => ({
+      ...prevSettings,
+      mapType: MapTypeSettingsArray[map.id]
     }));
   };
 
@@ -114,9 +122,49 @@ function MapSettings() {
                     <input
                       type='checkbox'
                       checked={
-                        mapPageSettings.selectedStyle.name === display.name
+                        mapPageSettings.mapType === display.name
                       }
                       onChange={() => handleStyleChange(display)}
+                    />
+                    <span className='slider'></span>
+                  </label>
+                </div>
+              </div>
+            ))}
+          </section>
+        </div>
+      </section>
+
+      <div className='h-[1px] bg-gray-400 my-4'></div>
+
+      <section className='grid'>
+        <div className='grid pb-4'>Map Type</div>
+        <div className='grid h-full'>
+          <section className='grid grid-cols-3 gap-y-6 gap-x-4 h-fit'>
+            {MapTypeSettingsArray.map((map, index) => (
+              <div key={index} className='grid'>
+                <div className='grid justify-center'>
+                  {map.backgroundImage ? (
+                    <img
+                      src={map.backgroundImage}
+                      alt={map.title}
+                      className='max-w-[200px] w-[200px] h-[120px]'
+                    />
+                  ) : (
+                    <div
+                      className={`max-w-[200px] w-[200px] h-[120px] ${map.styleSettings.altBackgroundColour}`}
+                    ></div>
+                  )}
+                </div>
+                <div className='flex justify-center items-center'>
+                  <span className='mr-2'>{map.title}</span>
+                  <label className='switch'>
+                    <input
+                      type='checkbox'
+                      checked={
+                        mapPageSettings.selectedStyle.name === map.name
+                      }
+                      onChange={() => handleMapTypeChange(map)}
                     />
                     <span className='slider'></span>
                   </label>
