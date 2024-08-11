@@ -1,8 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-// Data
-import { CountriesDataArray } from '../../utils/data/CountriesData';
-// Functions
-import { createLongAndLatLines } from '../../utils/map/MapFunctions';
 // Context
 import { MapContext } from '../../context/MapContext';
 // Components
@@ -31,6 +27,45 @@ function MapPage() {
   const [activeCountryId, setActiveCountryId] = useState(null);
   const [hoveredCountry, setHoveredCountry] = useState(null);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+  const [sunPosition, setSunPosition] = useState({
+    x: window.innerWidth / 2,
+    y: window.innerHeight / 2,
+  });
+  const [moonPosition, setMoonPosition] = useState({
+    x: window.innerWidth / 2,
+    y: window.innerHeight / 2,
+  });
+
+  useEffect(() => {
+    const updateSunAndMoonPosition = () => {
+      let time = new Date();
+      let hours = time.getHours();
+      let minutes = time.getMinutes();
+      let totalMinutes = hours * 60 + minutes;
+
+      // Assuming the sun starts at the right (east) and ends at the left (west)
+      let finish = window.innerWidth;
+
+      // Calculate the sun's position - reverse the calculation to move from right to left
+      let sunX = finish - (totalMinutes / 1440) * finish;
+
+      // Calculate the moon's position - opposite to the sun
+      let moonX = finish - sunX;
+
+      // Set the sun's and moon's positions
+      setSunPosition({ x: sunX, y: window.innerHeight / 2 });
+      setMoonPosition({ x: moonX, y: window.innerHeight / 2 });
+    };
+
+    // Update the positions every minute
+    const intervalId = setInterval(updateSunAndMoonPosition, 60000);
+
+    // Initial update
+    updateSunAndMoonPosition();
+
+    // Clear the interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
 
   // Mouse position
   const handleMouseOver = (country) => {
@@ -89,12 +124,6 @@ function MapPage() {
             xmlns='http://www.w3.org/2000/svg'
             className='h-full w-full cursor-pointer no__highlights'
           >
-            {/* Long and lat lines */}
-            {mapPageSettings.displayLongitudeAndLatitude &&
-              createLongAndLatLines(
-                mapPageSettings.includeLongitudeAndLatitudeText
-              )}
-
             {/* Countries Array */}
             {mapPageSettings.mapType.mapData.map((country) =>
               country.countryBorderPaths.map((territory, index) => (
@@ -152,6 +181,30 @@ function MapPage() {
           tooltipPosition={tooltipPosition}
           hoveredCountry={hoveredCountry}
         />
+      )}
+      {mapPageSettings.sunAndMoon && (
+        <div
+          className='sun_ball'
+          style={{
+            position: 'absolute',
+            top: `${sunPosition.y}px`, // Y position is typically top
+            left: `${sunPosition.x}px`, // X position is typically left
+            transform: 'translate(-50%, -50%)',
+          }}
+        ></div>
+      )}
+      {mapPageSettings.sunAndMoon && (
+        <div
+          className='moon_ball'
+          style={{
+            position: 'absolute',
+            top: `${moonPosition.y}px`, // Y position is typically top
+            left: `${moonPosition.x}px`, // X position is typically left
+            transform: 'translate(-50%, -50%)',
+          }}
+        >
+          <div className='moon'></div>
+        </div>
       )}
     </div>
   );
