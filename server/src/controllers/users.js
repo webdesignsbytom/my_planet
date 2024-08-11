@@ -13,6 +13,7 @@ import {
   createNewProfile,
   updateProfileById,
   findUserByEmailAdminCheck,
+  updateUserCountryList,
 } from '../domain/users.js';
 // Response messages
 import {
@@ -188,7 +189,6 @@ export const createSinglePersonProfile = async (req, res) => {
     hiddenHashtagsPerson1,
   } = req.body;
 
-
   try {
     // Create profile for the existing user
     const newProfile = await createNewProfile(userId, {
@@ -342,6 +342,36 @@ export const updateUserProfile = async (req, res) => {
     return sendDataResponse(res, 200, { updatedProfile });
   } catch (err) {
     // Handle server error
+    const serverError = new ServerErrorEvent('Update profile server error');
+    myEmitterErrors.emit('error', serverError);
+    sendMessageResponse(res, serverError.code, serverError.message);
+    throw err;
+  }
+};
+
+export const updateCountriesVisitedHandler = async (req, res) => {
+  console.log('updateCountriesVisitedHandler');
+
+  const { userId } = req.params;
+  const { countriesVisited } = req.body;
+
+  try {
+    // Assuming you are using a database query to update the user profile
+    const updatedUser = await updateUserCountryList(
+      userId,
+      countriesVisited
+    );
+    if (!updatedUser) {
+      const notUpdated = new BadRequestEvent(
+        EVENT_MESSAGES.badRequest,
+        EVENT_MESSAGES.updateUserFail
+      );
+      myEmitterErrors.emit('error', notUpdated);
+      return sendMessageResponse(res, notUpdated.code, notUpdated.message);
+    }
+
+    return sendDataResponse(res, 200, { updatedUser });
+  } catch (err) {
     const serverError = new ServerErrorEvent('Update profile server error');
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);

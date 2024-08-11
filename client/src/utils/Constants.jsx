@@ -14,6 +14,7 @@ export const REGISTER_API = '/users/register';
 export const SINGLE_PERSON_POST_API = '/users/create-single-person-profile'; // userId
 export const COUPLES_POST_API = '/users/create-couples-profile'; // userId
 export const UPDATE_PROFILE_API = '/users/update-user-profile'; // profileId
+export const UPDATE_COUNTRIES_LIST_API = '/users/update-user-profile/countries-visited'; // userId
 export const GET_PROFILE_API = '/users/get-profile-by-id'; // profileId
 export const UPDATE_SETTINGS_API = '/settings/settings-update'; // userId
 export const UPLOAD_IMAGE_API = '/images/upload-image'; // userId

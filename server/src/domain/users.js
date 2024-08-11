@@ -67,6 +67,15 @@ export const createNewProfile = (userId, profileData) =>
     },
   });
 
+export const updateUserCountryList = async (userId, countriesVisited) => {
+  return dbClient.user.update({
+    where: { id: userId },
+    data: {
+      countriesVisited,
+    },
+  });
+};
+
 export const updateProfileById = async (profileId, profileData) => {
   return dbClient.profile.update({
     where: {

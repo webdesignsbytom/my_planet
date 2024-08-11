@@ -3,10 +3,14 @@ import React, { useContext, useState, useEffect } from 'react';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 // Context
 import { MapContext } from '../../context/MapContext';
+import { UserContext } from '../../context/UserContext';
+import client from '../../api/client';
+import { UPDATE_COUNTRIES_LIST_API } from '../../utils/Constants';
 
 function CountriesListContainer() {
   const { mapPageSettings, setMapPageSettings, toggleCountryListContainer } =
     useContext(MapContext);
+    const { user } = useContext(UserContext)
   const [countries, setCountries] = useState([1]);
 
   useEffect(() => {
@@ -14,16 +18,48 @@ function CountriesListContainer() {
       setCountries(mapPageSettings.countriesVisited);
     }
   }, [mapPageSettings]);
-
   const handleCheckboxChange = (index) => {
     const updatedCountries = countries.map((country, idx) =>
       idx === index ? { ...country, hasVisited: !country.hasVisited } : country
     );
     setCountries(updatedCountries);
+  
+    const updatedVisitedCountries = updatedCountries
+      .filter(country => country.hasVisited)
+      .map(country => country.countryName);
+  
     setMapPageSettings((prevSettings) => ({
       ...prevSettings,
-      countriesVisited: updatedCountries,
+      countriesVisited: updatedVisitedCountries,
     }));
+  
+    // Assuming `userId` is available through context or props
+    updateCountriesVisitedOnServer(updatedVisitedCountries);
+  };
+  
+  // Function to send the updated list to the server
+  const updateCountriesVisitedOnServer = async (countriesVisited) => {
+    client
+    .get(`${UPDATE_COUNTRIES_LIST_API}/${user.id}`)
+    .then((res) => {
+      console.log('res', res.data.data.updatedUser);
+    })
+
+    .catch((err) => {
+      console.error('Unable to update user data', err);
+    });
+
+    try {
+      await fetch(`/api/update-countries-visited/${user.id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ countriesVisited }),
+      });
+    } catch (error) {
+      console.error('Failed to update countries visited:', error);
+    }
   };
 
   return (
