@@ -43,17 +43,47 @@ import ChilePoster from '../../assets/images/posters/chile.png';
 import ChinaPoster from '../../assets/images/posters/china.png';
 import ColombiaPoster from '../../assets/images/posters/colombia.png';
 import ComorosPoster from '../../assets/images/posters/comoros.png';
+import CuracaoPoster from '../../assets/images/posters/curacao.png';
 import CostaRicaPoster from '../../assets/images/posters/costa_rica.png';
 import IvoryCoastPoster from '../../assets/images/posters/côte_d_ivoire.png';
 import CubaPoster from '../../assets/images/posters/cuba.png';
+import CyprusPoster from '../../assets/images/posters/cyprus.png';
+import CzechRepublicPoster from '../../assets/images/posters/czech_republic.png';
 import DenmarkPoster from '../../assets/images/posters/denmark.png';
+import DRCPoster from '../../assets/images/posters/democratic_republic_congo.png';
+import DjiboutiPoster from '../../assets/images/posters/djibouti.png';
+import DominicaPoster from '../../assets/images/posters/dominica.png';
+import DominicanRepublicPoster from '../../assets/images/posters/dominican_republic.png';
+import EcuadorPoster from '../../assets/images/posters/ecuador.png';
 import EgyptPoster from '../../assets/images/posters/egypt.png';
+import ElSalvadorPoster from '../../assets/images/posters/el_salvador.png';
+import EquetorialGuineaPoster from '../../assets/images/posters/equetorial_guinea.png';
 import EnglandPoster from '../../assets/images/posters/england.png';
+import EritreaPoster from '../../assets/images/posters/eritrea.png';
+import EstoniaPoster from '../../assets/images/posters/estonia.png';
+import EswatiniPoster from '../../assets/images/posters/eswatini.png';
 import EthiopaPoster from '../../assets/images/posters/ethiopa.png';
+import FaeroeIslandsPoster from '../../assets/images/posters/faeroe_islands.png';
+import FederatedStatesMicronesiaPoster from '../../assets/images/posters/federated_states_micronesia.png';
+import FinlandPoster from '../../assets/images/posters/finland.png';
 import FijiPoster from '../../assets/images/posters/fiji.png';
 import FrancePoster from '../../assets/images/posters/france.png';
+import FrenchGuianaPoster from '../../assets/images/posters/french_guiana.png';
+import FrenchPolynesiaPoster from '../../assets/images/posters/french_polynesia.png';
+import GabonPoster from '../../assets/images/posters/gabon.png';
+import GeorgiaPoster from '../../assets/images/posters/georgia.png';
+import GermanyPoster from '../../assets/images/posters/germany.png';
+import GhanaPoster from '../../assets/images/posters/ghana.png';
+import GreecePoster from '../../assets/images/posters/greece.png';
 import GreenlandPoster from '../../assets/images/posters/greenland.png';
+import GrenadaPoster from '../../assets/images/posters/grenada.png';
+import GuadeloupePoster from '../../assets/images/posters/guadeloupe.png';
 import GuamPoster from '../../assets/images/posters/guam.png';
+import GuatemalaPoster from '../../assets/images/posters/guatemala.png';
+import GuineaBissauPoster from '../../assets/images/posters/guinea_bissau.png';
+import GuineaPoster from '../../assets/images/posters/guinea.png';
+import GuyanaPoster from '../../assets/images/posters/guyana.png';
+import HaitiPoster from '../../assets/images/posters/haiti.png';
 import HungaryPoster from '../../assets/images/posters/hungary.png';
 import IcelandPoster from '../../assets/images/posters/iceland.png';
 import IndiaPoster from '../../assets/images/posters/india.png';
@@ -1422,7 +1452,7 @@ export const CountriesDataArray = [
   {
     id: 'Curaçao',
     countryName: 'Curaçao',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: CuracaoPoster,
     visited: false,
     defaultColor: countryColoursArray[2],
     pinX: 1383,
@@ -1440,7 +1470,7 @@ export const CountriesDataArray = [
   {
     id: 'Cyprus',
     countryName: 'Cyprus',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: CyprusPoster,
     visited: false,
     defaultColor: countryColoursArray[3],
     pinX: 1383,
@@ -1465,7 +1495,7 @@ export const CountriesDataArray = [
   {
     id: 'Czech Republic',
     countryName: 'Czech Republic',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: CzechRepublicPoster,
     visited: false,
     defaultColor: countryColoursArray[4],
     pinX: 1383,
@@ -1483,7 +1513,7 @@ export const CountriesDataArray = [
   {
     id: 'Democratic Republic of the Congo',
     countryName: 'Democratic Republic of the Congo',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: DRCPoster,
     visited: false,
     defaultColor: countryColoursArray[5],
     pinX: 1383,
@@ -1526,7 +1556,7 @@ export const CountriesDataArray = [
   {
     id: 'Djibouti',
     countryName: 'Djibouti',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: DjiboutiPoster,
     visited: false,
     defaultColor: countryColoursArray[1],
     pinX: 1383,
@@ -1544,7 +1574,7 @@ export const CountriesDataArray = [
   {
     id: 'Dominica',
     countryName: 'Dominica',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: DominicaPoster,
     visited: false,
     defaultColor: countryColoursArray[2],
     pinX: 1383,
@@ -1567,7 +1597,7 @@ export const CountriesDataArray = [
   {
     id: 'Dominican Republic',
     countryName: 'Dominican Republic',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: DominicanRepublicPoster,
     visited: false,
     defaultColor: countryColoursArray[3],
     pinX: 1383,
@@ -1587,7 +1617,7 @@ export const CountriesDataArray = [
   {
     id: 'Ecuador',
     countryName: 'Ecuador',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: EcuadorPoster,
     visited: false,
     defaultColor: countryColoursArray[6],
     pinX: 1383,
@@ -1627,7 +1657,7 @@ export const CountriesDataArray = [
   {
     id: 'El Salvador',
     countryName: 'El Salvador',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: ElSalvadorPoster,
     visited: false,
     defaultColor: countryColoursArray[0],
     pinX: 1383,
@@ -1645,7 +1675,7 @@ export const CountriesDataArray = [
   {
     id: 'Equatorial Guinea',
     countryName: 'Equatorial Guinea',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: EquetorialGuineaPoster,
     visited: false,
     defaultColor: countryColoursArray[1],
     pinX: 1383,
@@ -1665,7 +1695,7 @@ export const CountriesDataArray = [
   {
     id: 'Eritrea',
     countryName: 'Eritrea',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: EritreaPoster,
     visited: false,
     defaultColor: countryColoursArray[2],
     pinX: 1383,
@@ -1683,7 +1713,7 @@ export const CountriesDataArray = [
   {
     id: 'Estonia',
     countryName: 'Estonia',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: EstoniaPoster,
     visited: false,
     defaultColor: countryColoursArray[3],
     pinX: 1383,
@@ -1703,7 +1733,7 @@ export const CountriesDataArray = [
   {
     id: 'Eswatini',
     countryName: 'Eswatini',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: EswatiniPoster,
     visited: false,
     defaultColor: countryColoursArray[4],
     pinX: 1383,
@@ -1807,7 +1837,7 @@ export const CountriesDataArray = [
   {
     id: 'Faeroe Islands',
     countryName: 'Faeroe Islands',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: FaeroeIslandsPoster,
     visited: false,
     defaultColor: countryColoursArray[1],
     pinX: 1383,
@@ -1855,7 +1885,7 @@ export const CountriesDataArray = [
   {
     id: 'Federated States of Micronesia',
     countryName: 'Federated States of Micronesia',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: FederatedStatesMicronesiaPoster,
     visited: false,
     defaultColor: countryColoursArray[2],
     pinX: 1383,
@@ -1948,7 +1978,7 @@ export const CountriesDataArray = [
   {
     id: 'Finland',
     countryName: 'Finland',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: FinlandPoster,
     visited: false,
     defaultColor: countryColoursArray[6],
     pinX: 1383,
@@ -1989,7 +2019,7 @@ export const CountriesDataArray = [
   {
     id: 'French Guiana',
     countryName: 'French Guiana',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: FrenchGuianaPoster,
     visited: false,
     defaultColor: countryColoursArray[0],
     pinX: 1383,
@@ -2007,7 +2037,7 @@ export const CountriesDataArray = [
   {
     id: 'French Polynesia',
     countryName: 'French Polynesia',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: FrenchPolynesiaPoster,
     visited: false,
     defaultColor: countryColoursArray[1],
     pinX: 1383,
@@ -2095,7 +2125,7 @@ export const CountriesDataArray = [
   {
     id: 'Gabon',
     countryName: 'Gabon',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: GabonPoster,
     visited: false,
     defaultColor: countryColoursArray[2],
     pinX: 1383,
@@ -2135,7 +2165,7 @@ export const CountriesDataArray = [
   {
     id: 'Georgia',
     countryName: 'Georgia',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: GeorgiaPoster,
     visited: false,
     defaultColor: countryColoursArray[4],
     pinX: 1383,
@@ -2155,7 +2185,7 @@ export const CountriesDataArray = [
   {
     id: 'Germany',
     countryName: 'Germany',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: GermanyPoster,
     visited: false,
     defaultColor: countryColoursArray[5],
     pinX: 1383,
@@ -2175,7 +2205,7 @@ export const CountriesDataArray = [
   {
     id: 'Ghana',
     countryName: 'Ghana',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: GhanaPoster,
     visited: false,
     defaultColor: countryColoursArray[0],
     pinX: 1383,
@@ -2195,7 +2225,7 @@ export const CountriesDataArray = [
   {
     id: 'Greece',
     countryName: 'Greece',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: GreecePoster,
     visited: false,
     defaultColor: countryColoursArray[1],
     pinX: 1383,
@@ -2238,7 +2268,7 @@ export const CountriesDataArray = [
   {
     id: 'Grenada',
     countryName: 'Grenada',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: GrenadaPoster,
     visited: false,
     defaultColor: countryColoursArray[3],
     pinX: 1383,
@@ -2256,7 +2286,7 @@ export const CountriesDataArray = [
   {
     id: 'Guadeloupe',
     countryName: 'Guadeloupe',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: GuadeloupePoster,
     visited: false,
     defaultColor: countryColoursArray[4],
     pinX: 1383,
@@ -2302,7 +2332,7 @@ export const CountriesDataArray = [
   {
     id: 'Guatemala',
     countryName: 'Guatemala',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: GuatemalaPoster,
     visited: false,
     defaultColor: countryColoursArray[1],
     pinX: 1383,
@@ -2320,7 +2350,7 @@ export const CountriesDataArray = [
   {
     id: 'Guinea',
     countryName: 'Guinea',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: GuineaPoster,
     visited: false,
     defaultColor: countryColoursArray[2],
     pinX: 1383,
@@ -2340,7 +2370,7 @@ export const CountriesDataArray = [
   {
     id: 'Guinea-Bissau',
     countryName: 'Guinea-Bissau',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: GuineaBissauPoster,
     visited: false,
     defaultColor: countryColoursArray[3],
     pinX: 1383,
@@ -2360,7 +2390,7 @@ export const CountriesDataArray = [
   {
     id: 'Guyana',
     countryName: 'Guyana',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: GuyanaPoster,
     visited: false,
     defaultColor: countryColoursArray[4],
     pinX: 1383,
@@ -2380,7 +2410,7 @@ export const CountriesDataArray = [
   {
     id: 'Haiti',
     countryName: 'Haiti',
-    posterImageUrl: NetherlandsPoster,
+    posterImageUrl: HaitiPoster,
     visited: false,
     defaultColor: countryColoursArray[5],
     pinX: 1383,
