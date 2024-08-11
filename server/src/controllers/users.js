@@ -32,7 +32,6 @@ import {
 const hashRate = 8;
 
 export const getAllUsers = async (req, res) => {
-  console.log('getAllUsers');
   try {
     const foundUsers = await findAllUsers();
 
@@ -57,10 +56,15 @@ export const getAllUsers = async (req, res) => {
 };
 
 export const getUserById = async (req, res) => {
-  console.log('getUserById');
   const { userId } = req.params;
 
   try {
+    if (!userId) {
+      return sendDataResponse(res, 400, {
+        email: 'Missing userId',
+      });
+    }
+
     const foundUser = await findUserById(userId);
     if (!foundUser) {
       const notFound = new NotFoundEvent(
@@ -87,12 +91,15 @@ export const getUserById = async (req, res) => {
 };
 
 export const getUserByEmail = async (req, res) => {
-  console.log('getUserByEmail');
   const { email } = req.params;
-  console.log('xxx', email);
 
   const lowerCaseEmail = email.toLowerCase();
   try {
+    if (!lowerCaseEmail) {
+      return sendDataResponse(res, 400, {
+        email: 'Missing email address',
+      });
+    }
     const foundUser = await findUserByEmail(lowerCaseEmail);
 
     if (!foundUser) {
@@ -105,7 +112,6 @@ export const getUserByEmail = async (req, res) => {
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
-    console.log('found', foundUser);
     delete foundUser.password;
     delete foundUser.agreedToTerms;
 
@@ -190,6 +196,11 @@ export const createSinglePersonProfile = async (req, res) => {
   } = req.body;
 
   try {
+    if (!userId) {
+      return sendDataResponse(res, 400, {
+        email: 'Missing userId',
+      });
+    }
     // Create profile for the existing user
     const newProfile = await createNewProfile(userId, {
       firstName: firstNamePerson1,
@@ -224,8 +235,6 @@ export const createSinglePersonProfile = async (req, res) => {
 };
 
 export const createCoupleProfiles = async (req, res) => {
-  console.log('create new couple profiles');
-
   const { userId } = req.params;
   const {
     firstNamePerson1,
@@ -251,6 +260,11 @@ export const createCoupleProfiles = async (req, res) => {
   } = req.body;
 
   try {
+    if (!userId) {
+      return sendDataResponse(res, 400, {
+        email: 'Missing userId',
+      });
+    }
     // Create profile for the first person
     const profile1 = await createNewProfile(userId, {
       firstName: firstNamePerson1,
@@ -299,8 +313,6 @@ export const createCoupleProfiles = async (req, res) => {
 };
 
 export const updateUserProfile = async (req, res) => {
-  console.log('update user profile');
-
   const { profileId } = req.params;
   const {
     firstName,
@@ -316,6 +328,11 @@ export const updateUserProfile = async (req, res) => {
   } = req.body;
 
   try {
+    if (!profileId) {
+      return sendDataResponse(res, 400, {
+        email: 'Missing profileId',
+      });
+    }
     // Update profile with the given data
     const updatedProfile = await updateProfileById(profileId, {
       firstName,
@@ -356,6 +373,11 @@ export const updateCountriesVisitedHandler = async (req, res) => {
   const { countriesVisited } = req.body;
 
   try {
+    if (!userId || !countriesVisited) {
+      return sendDataResponse(res, 400, {
+        email: 'Missing data in request',
+      });
+    }
     // Assuming you are using a database query to update the user profile
     const updatedUser = await updateUserCountryList(
       userId,
@@ -383,6 +405,12 @@ export const getProfileByIdHandler = async (req, res) => {
   const { profileId } = req.params;
 
   try {
+    if (!profileId) {
+      return sendDataResponse(res, 400, {
+        email: 'Missing profileId',
+      });
+    }
+
     const profile = await getProfileById(profileId);
 
     if (!profile) {
@@ -406,9 +434,15 @@ export const getProfileByIdHandler = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
   console.log('deleteUser');
-  const userId = req.params.userId;
+  const { userId } = req.params;
 
   try {
+    if (!userId) {
+      return sendDataResponse(res, 400, {
+        email: 'Missing userId',
+      });
+    }
+    
     const foundUser = await findUserById(userId);
     if (!foundUser) {
       const notFound = new NotFoundEvent(
