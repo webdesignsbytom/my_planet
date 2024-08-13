@@ -35,9 +35,8 @@ export const login = async (req, res) => {
 
     delete foundUser.password
     const token = createAccessToken(foundUser.id, foundUser.email)
-console.log('xxxxxxxxxxxxxxx');
     const existingUser = await findUserByEmail(lowerCaseEmail);
-console.log('yyyyyyyyyyyyyyy');
+    
     return sendDataResponse(res, 200, { token, existingUser })
 
   } catch (err) {
