@@ -1,115 +1,147 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-// Context
-import { UserContext } from '../../context/UserContext';
-import { ToggleContext } from '../../context/ToggleContext';
-import { MapContext } from '../../context/MapContext';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+// Icons
+import { IoMdMenu } from 'react-icons/io';
 // Images
 import LogoImage from '../../assets/images/logos/my_planet_camera_travel_logo.png';
+// Context
+import { useUser } from '../../context/UserContext';
 // Constants
 import {
+  ADMIN_PAGE_URL,
+  CompanyName,
   HOME_PAGE_URL,
   LOGIN_PAGE_URL,
   MAP_PAGE_URL,
   SIGN_UP_PAGE_URL,
   TERMS_PAGE_URL,
 } from '../../utils/Constants';
+// Hooks
+import useNavigateToPage from '../../hooks/useNavigateToPage';
 
 function Navbar() {
-  const { user, setUser } = useContext(UserContext);
-  const { toggleMapSettingsContainer } = useContext(MapContext);
-  const { toggleNavbarOpenClosed, toggleNavigation, activeNav, setActiveNav } =
-    useContext(ToggleContext);
+  const { user, setUser } = useUser();
+  const { navigateToPage } = useNavigateToPage();
 
-  let navigate = useNavigate();
+  const [isPhoneNavOpen, setIsPhoneNavOpen] = useState(false);
 
-  const logoutUser = (event) => {
+  const togglePhoneNav = () => {
+    setIsPhoneNavOpen((prev) => !prev);
+  };
+
+  const handleLogout = (event) => {
     event.preventDefault();
-    setActiveNav(HOME_PAGE_URL);
-    toggleNavbarOpenClosed();
     setUser({});
     localStorage.removeItem(process.env.REACT_APP_USER_TOKEN);
-
-    navigate(HOME_PAGE_URL, { replace: true });
+    navigateToPage(HOME_PAGE_URL, { replace: true });
   };
 
-  const links = [
-    { to: HOME_PAGE_URL, label: 'Home' },
-    { to: MAP_PAGE_URL, label: 'Map' },
-    { to: TERMS_PAGE_URL, label: 'Terms and Privacy' },
-    ...(user.email
-      ? []
+  const navItems = [
+    { path: HOME_PAGE_URL, label: 'Home' },
+    { path: MAP_PAGE_URL, label: 'Map' },
+    { path: TERMS_PAGE_URL, label: 'Terms and Privacy' },
+    ...(user?.email
+      ? [
+          ...(user.role === 'ADMIN' || user.role === 'DEVELOPER'
+            ? [{ path: ADMIN_PAGE_URL, label: 'Admin' }]
+            : []),
+        ]
       : [
-          { to: LOGIN_PAGE_URL, label: 'Login' },
-          { to: SIGN_UP_PAGE_URL, label: 'Sign Up' },
+          { path: LOGIN_PAGE_URL, label: 'Login' },
+          { path: SIGN_UP_PAGE_URL, label: 'Sign Up' },
         ]),
-    ...(user.role === 'ADMIN' || user.role === 'DEVELOPER'
-      ? [{ to: '/admin', label: 'Admin' }]
-      : []),
   ];
 
-  // Pre open settings container
-  const handleSettingsClick = () => {
-    toggleMapSettingsContainer();
-  };
-
-  let basisTabStyle =
-    'hover:text-gray-700 bg-red-500 active:scale-95 grid items-center h-fit w-full py-1';
-
-  let activeTabStyle = 'text-white hover:text-gray-700 active:scale-95 bg-red-800 grid items-center h-fit w-full py-1'
-
   return (
-    <nav className='grid bg-alt-colour h-full w-full overflow-hidden lg:min-w-[300px] border-black border-2 border-solid'>
-      <div className='grid grid-cols-reg lg:grid-rows-reg lg:grid-cols-1 h-full gap-2 py-2 px-1 md:px-2'>
-        {/* Nav image */}
-        <section className='grid items-center lg:justify-center lg:py-2 h-full w-full'>
-          <div>
-            <Link to={HOME_PAGE_URL}>
-              <img
-                src={LogoImage}
-                alt='myPlanet logo'
-                className='w-8 h-8 lg:w-44 lg:h-44'
-              />
-            </Link>
-          </div>
+    <nav
+      role='navigation'
+      aria-label='Main Navigation'
+      className='relative bg-nav-colour shadow-md'
+    >
+      <div className='grid grid-cols-reg lg:grid-rows-reg lg:grid-cols-none px-4 py-4 lg:h-full'>
+        <section className='grid w-full lg:justify-center lg:pt-8'>
+          <NavLink to={HOME_PAGE_URL}>
+            <img
+              src={LogoImage}
+              alt={`${CompanyName} business logo`}
+              className='w-10 h-10 lg:w-32 lg:h-32 cursor-pointer active:scale-95'
+            />
+          </NavLink>
         </section>
 
-        {/* Main nav items */}
-        <section className='grid items-center justify-end lg:justify-normal w-full h-full'>
-          <ul className='grid grid-flow-col font-travel text-center lg:text-xl lg:grid-flow-row w-full h-fit gap-2 font-semibold lg:mb-10'>
-            {links.map((link) => (
-              <li
-                key={link.to}
-                className={
-                  activeNav === link.to
-                    ? `${activeTabStyle}`
-                    : `${basisTabStyle}`
-                }
-              >
-                <Link className='w-full' to={link.to}>
-                  {link.label}
-                </Link>
-              </li>
+        <section className='grid justify-end lg:justify-normal lg:items-center lg:h-full'>
+          {/* Mobile screen */}
+          <button
+            aria-label='Toggle navigation menu'
+            onClick={togglePhoneNav}
+            className='grid lg:hidden w-fit h-fit items-center justify-center text-4xl text-white cursor-pointer'
+          >
+            <IoMdMenu className='active:scale-90 duration-300' />
+          </button>
+
+          {/* Large screen */}
+          <ul className='hidden lg:grid grid-flow-col lg:grid-flow-row lg:text-center lg:h-fit gap-2 items-center text-orange-600'>
+            {navItems.map(({ path, label }) => (
+              <NavItem key={label} url={path} title={label} />
             ))}
-            <li className={`${basisTabStyle}`}>
-              <Link
-                className='w-full'
-                to={MAP_PAGE_URL}
-                onClick={handleSettingsClick}
-              >
-                Settings
-              </Link>
-            </li>
-            {user.email && (
-              <button className='' onClick={logoutUser}>
-                Logout
-              </button>
+            {user?.email && (
+              <li>
+                <button
+                  className='hover:text-colour5 active:scale-95'
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              </li>
             )}
           </ul>
         </section>
       </div>
+
+      {/* Phone navbar */}
+      <div
+        className={`phone-nav absolute top-full left-0 w-full bg-nav-background transition-transform duration-300 ${
+          isPhoneNavOpen
+            ? 'translate-y-0 opacity-100'
+            : '-translate-y-full opacity-0'
+        }`}
+      >
+        <ul className='grid gap-8 items-center justify-center text-center bg-nav-colour text-orange-600 py-10'>
+          {navItems.map(({ path, label }) => (
+            <NavItem key={label} url={path} title={label} />
+          ))}
+          {user?.email && (
+            <li>
+              <button
+                className='w-full no__highlights nav__bg hover:bg-blue-500 active:scale-95 grid py-2 outline-2 outline outline-black bg-yellow-500 text-gray-800 font-semibold'
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </li>
+          )}
+        </ul>
+      </div>
     </nav>
   );
 }
+
+const NavItem = ({ url, title }) => {
+  return (
+    <li className='active:scale-90'>
+      <NavLink
+        to={url}
+        aria-label={`${title} page navigation tab`}
+        className='text-xl md:text-lg font-semibold font-travel hover:brightness-90 duration-200 active:scale-75'
+        aria-current={({ isActive }) => (isActive ? 'page' : undefined)}
+        style={({ isActive }) => {
+          return isActive ? { color: '#f8fafc' } : {};
+        }}
+      >
+        {title}
+      </NavLink>
+    </li>
+  );
+};
 
 export default Navbar;

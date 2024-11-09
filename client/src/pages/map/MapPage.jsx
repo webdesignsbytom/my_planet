@@ -14,6 +14,8 @@ import CountrySlideshowContainer from '../../components/overlays/CountrySlidesho
 import AccountSetUpContainer from '../../components/settings/AccountSetUpContainer';
 import OwnerDisplayContainer from '../../components/overlays/OwnerDisplayContainer';
 import AnimatedCanvas from '../../components/overlays/AnimatedCanvas';
+import { HelmetItem } from '../../components/utils/HelmetItem';
+import { CompanyName } from '../../utils/Constants';
 
 function MapPage() {
   const {
@@ -87,126 +89,136 @@ function MapPage() {
   console.log('mapPageSettings', mapPageSettings);
 
   return (
-    <div className='grid relative overflow-hidden h-full w-full'>
-      {/* Rotate device notice */}
-      <div className='landscape-warning text-center'>
-        <span className='px-4'>
-          Please rotate your device to landscape mode.
-        </span>
-      </div>
+    <>
+      {/* Tab Data */}
+      <HelmetItem
+        PageName={'World Map'}
+        desc={`World Map page of ${CompanyName}.`}
+      />
 
-      {/* Canvas Background Animation */}
-      <AnimatedCanvas animate={mapPageSettings.animatedSea} />
-
-      {/* Map container */}
-      <div
-        className={`grid h-screen w-full overflow-hidden md:p-1 ${
-          mapPageSettings.animatedSea && 'animate-ocean-animation'
-        }`}
-        style={{
-          backgroundImage: `url(${mapPageSettings.selectedStyle.backgroundImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-      >
-        <div className='grid h-full w-full overflow-hidden'>
-          {/* Map */}
-          <svg
-            id='allSvg'
-            baseProfile='tiny'
-            fill='transparent'
-            stroke='red'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-            version='1.2'
-            viewBox='0 0 2000 1000'
-            xmlns='http://www.w3.org/2000/svg'
-            className='h-full w-full cursor-pointer no__highlights'
-          >
-            {/* Countries Array */}
-            {mapPageSettings.mapType.mapData.map((country) =>
-              country.countryBorderPaths.map((territory, index) => (
-                <CountryObject
-                  key={`${country.countryName}-${index}`}
-                  country={country}
-                  territory={territory}
-                  hoveredCountry={hoveredCountry}
-                  activeCountryId={activeCountryId}
-                  handleMouseOver={handleMouseOver}
-                  handleMouseLeave={handleMouseLeave}
-                  visited={country.visited}
-                  exploreCountry={toggleCountryInfoContainer}
-                />
-              ))
-            )}
-          </svg>
+      <div className='grid relative overflow-hidden h-full w-full'>
+        {/* Rotate device notice */}
+        <div className='landscape-warning text-center'>
+          <span className='px-4'>
+            Please rotate your device to landscape mode.
+          </span>
         </div>
-      </div>
 
-      {/* Settings container */}
-      {mapPageContainerSettings.settingsMenuIsOpen && <SettingsMainContainer />}
+        {/* Canvas Background Animation */}
+        <AnimatedCanvas animate={mapPageSettings.animatedSea} />
 
-      {/* Right hand settings and other menu */}
-      {mapPageSettings.rightQatMenu && <RightSideQatToolbar />}
-
-      {/* Stats container */}
-      {mapPageSettings.statisticsContainer && <StatisticsContainer />}
-
-      {/* Upload images container */}
-      {mapPageContainerSettings.imagesContainer && <UploadImagesContainer />}
-
-      {/* Welcome back message container */}
-      {mapPageContainerSettings.welcomeContainer && <WelcomeBackContainer />}
-
-      {/* Country list container */}
-      {mapPageContainerSettings.countryListContainer && (
-        <CountriesListContainer />
-      )}
-
-      {/* Country information container */}
-      {mapPageContainerSettings.countryInfoDisplayIsOpen && (
-        <CountryInformationContainer />
-      )}
-
-      {/* Account set up */}
-      {mapPageContainerSettings.firstVisitToSite && <AccountSetUpContainer />}
-
-      {/* User banner */}
-      {mapPageContainerSettings.firstVisitToSite && <OwnerDisplayContainer />}
-
-      {/* Display Box - images and songs */}
-      {hoveredCountry && (
-        <CountrySlideshowContainer
-          tooltipPosition={tooltipPosition}
-          hoveredCountry={hoveredCountry}
-        />
-      )}
-      {mapPageSettings.sunAndMoon && (
+        {/* Map container */}
         <div
-          className='sun_ball'
+          className={`grid h-screen w-full overflow-hidden md:p-1 ${
+            mapPageSettings.animatedSea && 'animate-ocean-animation'
+          }`}
           style={{
-            position: 'absolute',
-            top: `${sunPosition.y}px`, // Y position is typically top
-            left: `${sunPosition.x}px`, // X position is typically left
-            transform: 'translate(-50%, -50%)',
-          }}
-        ></div>
-      )}
-      {mapPageSettings.sunAndMoon && (
-        <div
-          className='moon_ball'
-          style={{
-            position: 'absolute',
-            top: `${moonPosition.y}px`, // Y position is typically top
-            left: `${moonPosition.x}px`, // X position is typically left
-            transform: 'translate(-50%, -50%)',
+            backgroundImage: `url(${mapPageSettings.selectedStyle.backgroundImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
           }}
         >
-          <div className='moon'></div>
+          <div className='grid h-full w-full overflow-hidden'>
+            {/* Map */}
+            <svg
+              id='allSvg'
+              baseProfile='tiny'
+              fill='transparent'
+              stroke='red'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              version='1.2'
+              viewBox='0 0 2000 1000'
+              xmlns='http://www.w3.org/2000/svg'
+              className='h-full w-full cursor-pointer no__highlights'
+            >
+              {/* Countries Array */}
+              {mapPageSettings.mapType.mapData.map((country) =>
+                country.countryBorderPaths.map((territory, index) => (
+                  <CountryObject
+                    key={`${country.countryName}-${index}`}
+                    country={country}
+                    territory={territory}
+                    hoveredCountry={hoveredCountry}
+                    activeCountryId={activeCountryId}
+                    handleMouseOver={handleMouseOver}
+                    handleMouseLeave={handleMouseLeave}
+                    visited={country.visited}
+                    exploreCountry={toggleCountryInfoContainer}
+                  />
+                ))
+              )}
+            </svg>
+          </div>
         </div>
-      )}
-    </div>
+
+        {/* Settings container */}
+        {mapPageContainerSettings.settingsMenuIsOpen && (
+          <SettingsMainContainer />
+        )}
+
+        {/* Right hand settings and other menu */}
+        {mapPageSettings.rightQatMenu && <RightSideQatToolbar />}
+
+        {/* Stats container */}
+        {mapPageSettings.statisticsContainer && <StatisticsContainer />}
+
+        {/* Upload images container */}
+        {mapPageContainerSettings.imagesContainer && <UploadImagesContainer />}
+
+        {/* Welcome back message container */}
+        {mapPageContainerSettings.welcomeContainer && <WelcomeBackContainer />}
+
+        {/* Country list container */}
+        {mapPageContainerSettings.countryListContainer && (
+          <CountriesListContainer />
+        )}
+
+        {/* Country information container */}
+        {mapPageContainerSettings.countryInfoDisplayIsOpen && (
+          <CountryInformationContainer />
+        )}
+
+        {/* Account set up */}
+        {mapPageContainerSettings.firstVisitToSite && <AccountSetUpContainer />}
+
+        {/* User banner */}
+        {mapPageContainerSettings.firstVisitToSite && <OwnerDisplayContainer />}
+
+        {/* Display Box - images and songs */}
+        {hoveredCountry && (
+          <CountrySlideshowContainer
+            tooltipPosition={tooltipPosition}
+            hoveredCountry={hoveredCountry}
+          />
+        )}
+        {mapPageSettings.sunAndMoon && (
+          <div
+            className='sun_ball'
+            style={{
+              position: 'absolute',
+              top: `${sunPosition.y}px`, // Y position is typically top
+              left: `${sunPosition.x}px`, // X position is typically left
+              transform: 'translate(-50%, -50%)',
+            }}
+          ></div>
+        )}
+        {mapPageSettings.sunAndMoon && (
+          <div
+            className='moon_ball'
+            style={{
+              position: 'absolute',
+              top: `${moonPosition.y}px`, // Y position is typically top
+              left: `${moonPosition.x}px`, // X position is typically left
+              transform: 'translate(-50%, -50%)',
+            }}
+          >
+            <div className='moon'></div>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 

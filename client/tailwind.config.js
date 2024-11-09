@@ -21,7 +21,7 @@ module.exports = {
       },
       colors: {
         'main-colour': '#4AAD37',
-        'nav-colour': '#4AAD37',
+        'nav-colour': '#dcbc90',
         'alt-colour': '#dcbc90',
         'footer-colour': '#1F2937',
         'colour-pale': '#99DF8A',

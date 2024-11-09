@@ -3,23 +3,25 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 // Context
-import UserContextProvider from './context/UserContext';
 import ToggleContextProvider from './context/ToggleContext';
 import MapContextProvider from './context/MapContext';
+import UserProvider from './context/UserContext';
 // Styles
 import './styles/index.css';
 import './styles/backgrounds.css';
 import './styles/components.css';
+import './styles/animations.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <UserContextProvider>
+      <UserProvider>
       <MapContextProvider>
+
         <ToggleContextProvider>
           <App />
         </ToggleContextProvider>
       </MapContextProvider>
-    </UserContextProvider>
+      </UserProvider>
   </BrowserRouter>
 );
