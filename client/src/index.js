@@ -15,13 +15,12 @@ import './styles/animations.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-      <UserProvider>
+    <UserProvider>
       <MapContextProvider>
-
         <ToggleContextProvider>
           <App />
         </ToggleContextProvider>
       </MapContextProvider>
-      </UserProvider>
+    </UserProvider>
   </BrowserRouter>
 );

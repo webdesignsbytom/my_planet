@@ -54,3 +54,12 @@ export const GOOGLE_URL = 'https://google.com/';
 export const GITHUB_URL = 'https://github.com/';
 export const APPLE_URL = 'https://apple.com/';
 export const X_URL = 'https://x.com/';
+
+// URL
+export const FULL_BUSINESS_URL = 'https://www.bytetoast-studio.co.uk';
+export const SHORT_BUSINESS_URL = 'bytetoast-studio.co.uk';
+export const DISPLAY_BUSINESS_URL = 'www.bytetoast-studio.co.uk';
+
+export const FACEBOOK_BUSINESS_URL = `https://www.facebook.com/company/bytetoast-studio`;
+export const INSTAGRAM_BUSINESS_URL = `https://instagram.com/bytetoast-studio`;
+export const LINKEDIN_BUSINESS_URL = `https://www.linkedin.com/bytetoast-studio`;

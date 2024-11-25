@@ -7,6 +7,8 @@ import { CompanyName } from '../../utils/Constants';
 import Navbar from '../../components/nav/Navbar';
 import { HelmetItem } from '../../components/utils/HelmetItem';
 import HomePageMainContainer from '../../components/home/HomePageMainContainer';
+// Data
+import { homePageAdditionalMeta, homePageStructuredData } from '../../utils/data/MetaData';
 
 const HomePage = React.memo(() => {
   usePageTracking();
@@ -14,7 +16,13 @@ const HomePage = React.memo(() => {
   return (
     <>
       {/* Tab Data */}
-      <HelmetItem PageName={'Home'} desc={`Home page of ${CompanyName}.`} />
+      <HelmetItem
+        PageName='Home'
+        desc={`${CompanyName} offers expert web and circuit design solutions in England. Discover our services and featured projects.`}
+        keywords={`web design, circuit design, ${CompanyName}, England, UK, custom solutions`}
+        additionalMeta={homePageAdditionalMeta}
+        structuredData={homePageStructuredData}
+      />
 
       {/* Page */}
       <div className='grid min-h-screen lg:h-screen lg:max-h-screen lg:overflow-hidden font-poppins'>
