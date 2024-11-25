@@ -56,7 +56,7 @@ function Navbar() {
     <nav
       role='navigation'
       aria-label='Main Navigation'
-      className='relative bg-nav-colour shadow-md'
+      className='relative bg-nav-colour shadow-internal-main border-r-8 border-solid border-[#97572b]'
     >
       <div className='grid grid-cols-reg lg:grid-rows-reg lg:grid-cols-none px-4 py-4 lg:h-full'>
         <section className='grid w-full lg:justify-center lg:pt-8'>
@@ -64,7 +64,7 @@ function Navbar() {
             <img
               src={LogoImage}
               alt={`${CompanyName} business logo`}
-              className='w-10 h-10 lg:w-32 lg:h-32 cursor-pointer active:scale-95'
+              className='w-10 h-10 lg:w-32 lg:h-32 xl:w-44 xl:h-44 cursor-pointer active:scale-95'
             />
           </NavLink>
         </section>
@@ -80,7 +80,7 @@ function Navbar() {
           </button>
 
           {/* Large screen */}
-          <ul className='hidden lg:grid grid-flow-col lg:grid-flow-row lg:text-center lg:h-fit gap-2 items-center text-orange-600'>
+          <ul className='hidden lg:grid grid-flow-col lg:grid-flow-row lg:text-center lg:h-fit gap-1 items-center'>
             {navItems.map(({ path, label }) => (
               <NavItem key={label} url={path} title={label} />
             ))}
@@ -132,10 +132,10 @@ const NavItem = ({ url, title }) => {
       <NavLink
         to={url}
         aria-label={`${title} page navigation tab`}
-        className='text-xl md:text-lg font-semibold font-travel hover:brightness-90 duration-200 active:scale-75'
+        className='text-xl md:text-lg lg:text-2xl font-semibold font-travel text-black hover:brightness-90 duration-200 hover:text-gray-700 bg-gradient-to-br from-red-500 to-red-800 active:scale-95 grid items-center h-fit w-full py-1 px-4 border-2 border-solid border-black'
         aria-current={({ isActive }) => (isActive ? 'page' : undefined)}
         style={({ isActive }) => {
-          return isActive ? { color: '#f8fafc' } : {};
+          return isActive ? { color: 'white' } : {};
         }}
       >
         {title}

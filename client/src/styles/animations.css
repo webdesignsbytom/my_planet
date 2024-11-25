@@ -22,3 +22,64 @@ nav {
   opacity: 1;
   pointer-events: auto;
 }
+
+.triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.top-left::before,
+.top-right::before,
+.bottom-left::before,
+.bottom-right::before {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(to bottom right, rgb(102, 84, 38), rgb(186, 159, 11));
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.top-left {
+  top: 0;
+  left: 0;
+}
+
+.top-left::before {
+  top: 0;
+  left: 0;
+}
+
+.top-right {
+  top: 0;
+  right: 0;
+}
+
+.top-right::before {
+  top: 0;
+  right: 0;
+  transform: rotate(90deg);
+}
+
+.bottom-left {
+  bottom: 0;
+  left: 0;
+}
+
+.bottom-left::before {
+  bottom: 0;
+  left: 0;
+  transform: rotate(-90deg);
+}
+
+.bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+.bottom-right::before {
+  bottom: 0;
+  right: 0;
+  transform: rotate(180deg);
+}

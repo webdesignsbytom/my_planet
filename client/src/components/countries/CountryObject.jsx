@@ -26,6 +26,7 @@ function CountryObject({
         onMouseOver={() => handleMouseOver(country)}
         onMouseLeave={handleMouseLeave}
         onMouseUp={() => exploreCountry(country)}
+        
       />
     </g>
   );
